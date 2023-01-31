@@ -17,3 +17,19 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class News(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), unique=False, nullable=False)
+    body = db.Column(db.String(500), unique=False, nullable=False)
+   
+
+    def __repr__(self):
+        return f'<News {self.title}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "body": self.body  
+        }
