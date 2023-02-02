@@ -22,8 +22,9 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
     body = db.Column(db.String(500), unique=False, nullable=False)
+    image_url = db.Column(db.String(500), unique=True, nullable=False )
    ### user_news = db.Column(db.Integer,  db.ForeignKey('user.id'),  nullable=False)
-   ### artist_news = db.column(db.Integer, db.ForeignKey('artist.id'),  nullable=False)
+   ### artist_news = db.column(db.Integer, db.ForeignKey('artist.id'),  nullable=True)
    
 
     def __repr__(self):
