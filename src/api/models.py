@@ -22,10 +22,12 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
     body = db.Column(db.String(500), unique=False, nullable=False)
+   ### user_news = db.Column(db.Integer,  db.ForeignKey('user.id'),  nullable=False)
+   ### artist_news = db.column(db.Integer, db.ForeignKey('artist.id'),  nullable=False)
    
 
     def __repr__(self):
-        return f'<News {self.title}>'
+        return f'<News {self.id}>'
 
     def serialize(self):
         return {
