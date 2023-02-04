@@ -35,5 +35,6 @@ class Tickets(db.Model):
             "id": self.id,
             "ticket_type": self.ticket_type,
             "ticket_price": self.ticket_price,
-            "ticket_desc": self.ticket_desc
+            "ticket_desc": self.ticket_desc,
+            "ticket_quantity": self.ticket_quantity
         }

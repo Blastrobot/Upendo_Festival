@@ -23,7 +23,7 @@ def get_tickets():
     tickets = Tickets.query.all()
     results = [ticket.serialize() for ticket in tickets]
     response_body = {
-        "msg": "get method von tickets",
+        "msg": "Tickets, GET Method",
         "total": len(results),
         "results": results
     }
