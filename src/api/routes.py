@@ -16,7 +16,7 @@ def getAllArtist():
     }
     return jsonify(response_body), 200
 
-@api.route("/artist/<int:id>")
+@api.route("/artist/<int:id>", methods = ["GET"])
 def getArtistById(id):
     artist = db.get_or_404(Artist, id)
     response = artist.serialize()
