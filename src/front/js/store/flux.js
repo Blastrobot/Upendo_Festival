@@ -78,47 +78,46 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      //   adminValidation: async () => {
-      // 	const store = getStore();
-      // 	const requestOptions = {
-      // 	  method: "GET",
-      // 	  headers: {
-      // 		Authorization: `Bearer ${store.token}`,
-      // 	  },
-      // 	};
-      // 	try {
-      // 	  const res = await fetch(
-      // 		"https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/admin",
-      // 		requestOptions
-      // 	  );
-      // 	  const data = await res.json();
-      // 	  setStore({ admin: true })
-      // 	  return data;
-      // 	} catch (error) {
-      // 	  console.log(error);
-      // 	}
-      //   },
+      adminValidation: async () => {
+        const store = getStore();
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
+        };
+        try {
+          const res = await fetch(
+            "https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/admin/news",
+            requestOptions
+          );
+          const data = await res.json();
+          setStore({ admin: true });
+          return data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
-      //   userValidation: async () => {
-      // 	const store = getStore();
-      // 	const requestOptions = {
-      // 	  method: "GET",
-      // 	  headers: {
-      // 		Authorization: `Bearer ${store.token}`,
-      // 	  },
-      // 	};
-      // 	try {
-      // 	  const res = await fetch(
-      // 		"https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/checkout",
-      // 		requestOptions
-      // 	  );
-      // 	  const data = await res.json();
-      // 	  setStore({ admin: true })
-      // 	  return data;
-      // 	} catch (error) {
-      // 	  console.log(error);
-      // 	}
-      //   },
+      userValidation: async () => {
+        const store = getStore();
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
+        };
+        try {
+          const res = await fetch(
+            "https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/user/tickets",
+            requestOptions
+          );
+          const data = await res.json();
+          return data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
       UserLogout: () => {
         localStorage.removeItem("token");
