@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import "../../styles/signup.css";
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
@@ -34,7 +35,12 @@ export const Signup = () => {
             <div className="card bg-dark text-white">
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">Sign up!</h2>
+                  <img
+                    className="logo text-center"
+                    src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png"
+                  ></img>
+                  <h4 className="fw-bold mb-2 text-uppercase">Sign up!</h4>
+
                   <p className="text-white-50 mb-5">
                     Please enter a valid email and password
                     <br></br>
