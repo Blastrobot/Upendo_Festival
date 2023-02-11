@@ -4,18 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       admin: false,
       token: null,
       message: null,
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
+      artists: [],
+      next_page: [],
     },
     actions: {
       login: async (email, password) => {
@@ -64,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            "https://3001-blastrobot-finalproject-7rixvvmruxm.ws-eu85.gitpod.io/api/signup",
+            "https://3001-blastrobot-finalproject-9v4quhwb66k.ws-eu86.gitpod.io/api/signup",
             opts
           );
           if (resp.status !== 200) {
@@ -140,6 +130,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.log("Error loading message from backend", error);
         }
+      },
+
+      insertArtists: (data) => {
+        setStore({
+          artists: getStore().artists.concat(data.results),
+          next_page: data.next,
+        });
       },
     },
   };
