@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 
+
+
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -45,7 +47,7 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
     body = db.Column(db.String(500), unique=False, nullable=False)
-    image_url = db.Column(db.String(500), unique=True, nullable=False)
+    image_url = db.Column(db.String(120), unique=False, nullable=True)
     poster_news = db.Column(db.Integer,  db.ForeignKey('user.id'),  nullable=True)
 
 
@@ -65,8 +67,8 @@ class Artist(db.Model):
     ArtistId = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(250), unique=False, nullable=False)
-    imageUrl = db.Column(db.String(120), unique=False, nullable=False)
-    musicUrl = db.Column(db.String(120), unique=False, nullable=False)
+    image_url = db.Column(db.String(120), unique=False, nullable=False)
+    music_url = db.Column(db.String(120), unique=False, nullable=False)
     def __repr__(self):
         return f'<Artist {self.id}>'
     def serialize(self):
@@ -74,6 +76,9 @@ class Artist(db.Model):
             "ArtistId": self.ArtistId,
             "name": self.name,
             "description": self.description,
-            "imageUrl" : self.imageUrl,
-            "musicUrl" : self.musicUrl
+            "image_url": self.image_url,
+            "music_url" : self.music_url
         }
+
+
+

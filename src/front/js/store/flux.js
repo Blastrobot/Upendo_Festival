@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       message: null,
       artists: [],
+      news: [],
       next_page: [],
     },
     actions: {
@@ -135,6 +136,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       insertArtists: (data) => {
         setStore({
           artists: getStore().artists.concat(data.results),
+          next_page: data.next,
+        });
+      },
+      insertNews: (data) => {
+        setStore({
+          news: getStore().news.concat(data.results),
           next_page: data.next,
         });
       },

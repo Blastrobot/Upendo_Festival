@@ -3,18 +3,39 @@ import { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/signup.css";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
-  const [email, setEmail] = useState("");
-  const [password, setpassWord] = useState("");
-  const [verifypassword, setverifypassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    actions.userSignup(email, password).then(navigate("/"));
-  };
+  const formik = useFormik({
+    initialValues: {
+      typeEmailX: "",
+      typePasswordX: "",
+    },
+    validationSchema: Yup.object({
+      typeEmailX: Yup.string()
+        .matches(
+          /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/,
+          "Correo electrónico inválido"
+        )
+        .required("Este campo es requerido"),
+      typePasswordX: Yup.string()
+        .min(6, "Debe tener al menos 6 caracteres")
+        .max(15, "Debe tener máximo 15 caracteres")
+        .matches(
+          /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,15}$/,
+          "La contraseña deber tener 6 a 15 caracteres, 1 mayúscula, 1 minúscula y 1 número. No puede tener caracteres especiales"
+        )
+        .required("Este campo es requerido"),
+    }),
+    onSubmit: (values) => {
+      actions.userSignup(values.typeEmailX, values.typePasswordX);
+      navigate("/");
+    },
+  });
 
   useEffect(() => {
     store.token && store.token != "" && store.token != undefined;
@@ -22,14 +43,7 @@ export const Signup = () => {
 
   return (
     <div className="container py-5 h-100">
-      <form
-        className="form-body"
-        onSubmit={(e) => {
-          password === verifypassword
-            ? handleSubmit(e)
-            : alert("the passwords do not match");
-        }}
-      >
+      <form className="form-body" onSubmit={formik.handleSubmit}>
         <div className=" row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div className="card bg-dark text-white">
@@ -40,54 +54,49 @@ export const Signup = () => {
                     src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png"
                   ></img>
                   <h4 className="fw-bold mb-2 text-uppercase">Sign up!</h4>
-
                   <p className="text-white-50 mb-5">
                     Please enter a valid email and password
                     <br></br>
                     <span>
-                      (password must be between 8 to 14 characters long)
+                      (password must be between 6 to 14 characters long and must
+                      contain 1 uppercase and 1 lowercase.)
                     </span>
                   </p>
                   <div className="form-outline form-white mb-4">
                     <input
-                      value={email}
                       type="email"
                       id="typeEmailX"
-                      onChange={(e) =>
-                        setEmail(e.target.value.trim().toLowerCase())
-                      }
+                      name="typeEmailX"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.typeEmailX}
                       className="form-control form-control-lg"
                     />
+                    {formik.touched.typeEmailX && formik.errors.typeEmailX ? (
+                      <div className="text-danger">
+                        {formik.errors.typeEmailX}
+                      </div>
+                    ) : null}
                     <label className="form-label">Email</label>
                   </div>
                   <div className="form-outline form-white mb-4">
                     <input
                       type="password"
                       id="typePasswordX"
-                      value={password}
-                      minLength="8"
-                      maxLength="14"
-                      required
-                      onChange={(e) => setpassWord(e.target.value)}
+                      name="typePasswordX"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.typePasswordX}
                       className="form-control form-control-lg"
                     />
+                    {formik.touched.typePasswordX &&
+                    formik.errors.typePasswordX ? (
+                      <div className="text-danger">
+                        {formik.errors.typePasswordX}
+                      </div>
+                    ) : null}
                     <label className="form-label">Password</label>
                   </div>
-
-                  <div className="form-outline form-white mb-4">
-                    <input
-                      type="password"
-                      id="typePasswordy"
-                      value={verifypassword}
-                      minLength="8"
-                      maxLength="14"
-                      required
-                      onChange={(e) => setverifypassword(e.target.value)}
-                      className="form-control form-control-lg"
-                    />
-                    <label className="form-label"> Confirm Password</label>
-                  </div>
-
                   <button
                     className="btn btn-outline-light btn-lg px-5"
                     type="submit"
