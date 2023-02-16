@@ -8,9 +8,12 @@ export const Footer = () => (
         <img src={logo} width="250vh"></img>
       </div>
       <div className="rrss col-6 d-flex justify-content-end" width="50%">
-        <i className="bi bi-instagram h4 my-auto mx-2"></i>
-        <i className="bi bi-twitter h4 my-auto mx-2"></i>
-        <i className="bi bi-facebook h4 my-auto ms-2 me-4"></i>
+        <a className="bi bi-instagram h4 my-auto mx-2 text-white" href=""></a>
+        <a className="bi bi-twitter h4 my-auto mx-2  text-white" href=""></a>
+        <a
+          className="bi bi-facebook h4 my-auto ms-2 me-4  text-white"
+          href=""
+        ></a>
       </div>
     </div>
     <hr className="mt-0" />
@@ -47,29 +50,33 @@ export const Footer = () => (
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
+        href=""
       >
-        Terminos de uso
+        Terms & conditions
       </a>
       <p> - </p>
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
+        href=""
       >
-        Terminos de venta
+        Terms of use
       </a>
       <p> - </p>
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
+        href=""
       >
-        Aviso Legal
+        Privacy policy
       </a>
       <p> - </p>
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
+        href=""
       >
-        Política de privacidad y cookies
+        Cookie policy
       </a>
     </div>
     <div className="text-center pb-1">
