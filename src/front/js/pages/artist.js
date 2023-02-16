@@ -2,7 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
-import { Artist_card } from "../component/Artist-card";
+import { Artist_card } from "../component/Artist-card.jsx";
+
+import { Spinner } from "../component/Spinner.jsx";
 
 export const artist_grid = () => {
   const { store, actions } = useContext(Context);
@@ -11,20 +13,31 @@ export const artist_grid = () => {
 
   const getArtists = async (url) => {
     setLoading(true);
+    const request = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await fetch(url, request);
+    console.log(response);
+    if (response.ok) {
+      const data = await response.json();
 
-    actions.insertArtists(data);
+      console.log(data);
 
-    setLoading(false);
+      actions.insertArtists(data);
+
+      setLoading(false);
+    }
   };
 
   const artists = store.artists;
+  console.log(store.artists);
 
   useEffect(() => {
-    getArtists(`
-    https://3001-blastrobot-finalproject-9v4quhwb66k.ws-eu86.gitpod.io/api/artist`);
+    getArtists(
+      "https://3001-blastrobot-finalproject-9v4quhwb66k.ws-eu87.gitpod.io/api/artist"
+    );
   }, []);
 
   return (
@@ -32,13 +45,15 @@ export const artist_grid = () => {
       {loading ? (
         <Spinner />
       ) : (
-        artists.map((artist, index) => {
+        artists.map((artist) => {
           return (
-            <div key={index} className="container row row-cols-3 row-cols-md-2">
+            <div
+              key={artist.id}
+              className="container row row-cols-3 row-cols-md-2"
+            >
               <Artist_card
-                image={"cloudinarylink"}
+                image={artist.image_url}
                 name={artist.name}
-                text={artist.description}
                 artist_id={artist.id}
               />
             </div>
