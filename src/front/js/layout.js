@@ -9,7 +9,8 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Artist_card } from "./component/Artist-card.jsx";
-import { Artist_single_card } from "./component/Artist-single-card.jsx";
+import { Artist_grid } from "./pages/artist.js";
+import { ArtistSingleView } from "./pages/single-artist";
 
 //create your first component
 const Layout = () => {
@@ -24,8 +25,8 @@ const Layout = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Signup />} path="/signup" />
-            <Route element={<Artist_card />} path="/artist" />
-            <Route element={<Artist_single_card />} path="/artist/:artist_ID" />
+            <Route element={<Artist_grid />} path="/artist" />
+            <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>

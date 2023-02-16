@@ -6,7 +6,7 @@ import { Artist_card } from "../component/Artist-card.jsx";
 
 import { Spinner } from "../component/Spinner.jsx";
 
-export const artist_grid = () => {
+export const Artist_grid = () => {
   const { store, actions } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
