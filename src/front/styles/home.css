@@ -5,16 +5,3 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
-
-body {
-  background-color: #99d3ff;
-  background-image: radial-gradient(
-      at 17% 66%,
-      hsla(313, 61%, 69%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 83% 33%, hsla(281, 75%, 71%, 1) 0px, transparent 50%),
-    radial-gradient(at 7% 44%, hsla(53, 81%, 71%, 1) 0px, transparent 50%),
-    radial-gradient(at 5% 72%, hsla(278, 94%, 66%, 1) 0px, transparent 50%),
-    radial-gradient(at 83% 79%, hsla(5, 83%, 71%, 1) 0px, transparent 50%);
-}
