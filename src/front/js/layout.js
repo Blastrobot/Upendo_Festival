@@ -4,11 +4,13 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { Signup } from "./pages/signup";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Artist_card } from "./component/Artist-card.jsx";
+import { Artist_grid } from "./pages/artist.js";
+import { ArtistSingleView } from "./pages/single-artist";
 
 //create your first component
 const Layout = () => {
@@ -23,7 +25,8 @@ const Layout = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Signup />} path="/signup" />
-            <Route element={<Single />} path="/single/:theid" />
+            <Route element={<Artist_grid />} path="/artist" />
+            <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>

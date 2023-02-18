@@ -1,23 +1,17 @@
-
-import { useNavigate } from "react-router-dom";
-
 import React from "react";
 
-
-// const handleOnErrorImg = (e) => {
-//     e.target.src = "festival_logo";
-//   };
-
-
-
+import { useNavigate } from "react-router-dom";
 
 
 export const Artist_card = (props) => {
 
 
-    // const handleOnErrorImg = (e) => {
-    //     e.target.src = "festival_logo";
-    //   };
+
+
+    const handleOnErrorImg = (e) => {
+        e.target.src = "https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png";
+    };
+
 
 
     const navigate = useNavigate();
@@ -26,6 +20,7 @@ export const Artist_card = (props) => {
         navigate(`/artist/${artist_id}`)
 
     };
+
 
 
 
