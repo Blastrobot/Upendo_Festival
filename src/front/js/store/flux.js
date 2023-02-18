@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const res = await fetch(
-            "https://3001-blastrobot-finalproject-8zt3fz6eteh.ws-eu87.gitpod.io/api/admin/news",
+            process.env.BACKEND_URL + "/api/admin/news",
             requestOptions
           );
           const data = await res.json();
@@ -102,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const res = await fetch(
-            "https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/user/tickets",
+            process.env.BACKEND_URL + "/api/user/tickets",
             requestOptions
           );
           const data = await res.json();
