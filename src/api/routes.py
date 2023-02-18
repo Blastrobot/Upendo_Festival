@@ -56,7 +56,7 @@ def login():
         User.email == email, User.password == password, User.is_active == True).first()
     if user:
         access_token = create_access_token(identity=email)
-        return jsonify(access_token=access_token)
+        return jsonify(access_token=access_token, admin=user.is_admin)
 
     return jsonify({"msg": "Bad email or password"}), 40
 

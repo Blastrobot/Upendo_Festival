@@ -22,14 +22,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            "https://3001-blastrobot-finalproject-7rixvvmruxm.ws-eu85.gitpod.io/api/login",
-            options
-          );
+            process.env.BACKEND_URL + "/api/login", options);
+          console.log(process.env.BACKEND_URL)
+
           if (resp.status === 200) {
             const data = await resp.json();
             localStorage.setItem("token", data.access_token);
             setStore({ token: data.access_token });
-
+            setStore({ admin: data.admin})
+            // adminValidation() evaluar si tengo que ejecutar todo lo necesario para el admin
+            // el is_admin lo puedo traer dentro del json o dentro del token que tengo que averiguar
             return true;
           } else {
             alert("An error ocurred");
@@ -55,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            "https://3001-blastrobot-finalproject-9v4quhwb66k.ws-eu86.gitpod.io/api/signup",
+            process.env.BACKEND_URL + "/api/signup",
             opts
           );
           if (resp.status !== 200) {
@@ -79,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const res = await fetch(
-            "https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/admin/news",
+            process.env.BACKEND_URL + "/api/admin/news",
             requestOptions
           );
           const data = await res.json();
@@ -100,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const res = await fetch(
-            "https://3001-santiagoss0-reactflaskl-n5ion485vbv.ws-eu84.gitpod.io/api/user/tickets",
+            process.env.BACKEND_URL + "/api/user/tickets",
             requestOptions
           );
           const data = await res.json();
