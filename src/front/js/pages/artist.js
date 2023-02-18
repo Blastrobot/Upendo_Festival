@@ -6,6 +6,8 @@ import { Artist_card } from "../component/Artist-card.jsx";
 
 import { Spinner } from "../component/Spinner.jsx";
 
+import "../../styles/card.css";
+
 export const Artist_grid = () => {
   const { store, actions } = useContext(Context);
 
@@ -45,17 +47,16 @@ export const Artist_grid = () => {
       {loading ? (
         <Spinner />
       ) : (
-        artists.map((artist) => {
+        artists.map((artist, index) => {
           return (
-            <div
-              key={artist.id}
-              className="container row row-cols-3 row-cols-md-2"
-            >
-              <Artist_card
-                image={artist.image_url}
-                name={artist.name}
-                artist_id={artist.id}
-              />
+            <div className="d-flex d-row-col-3">
+              <div key={index} className="card-container d-flex flex-column ">
+                <Artist_card
+                  image={artist.image_url}
+                  name={artist.name}
+                  artist_id={artist.ArtistId}
+                />
+              </div>
             </div>
           );
         })

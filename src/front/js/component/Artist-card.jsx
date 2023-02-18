@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
+import "../../styles/card.css";
 
 
 export const Artist_card = (props) => {
@@ -26,14 +27,14 @@ export const Artist_card = (props) => {
 
     return (
 
-        <div id="artis-grid-card" className="card col-12 col-md-3 flex-row">
-            <img src={props.image} onError={handleOnErrorImg} className="card-img-top" />
-            <div className="card-body">
-                <h5 className="artist-name">{props.name}</h5>
+        <div className="card d-flex flex-col align-items-center">
+            <img className="artist-image" src={props.image} onError={handleOnErrorImg} />
+            <div className="hidden-menú">
+                <h6 className="artist-name">{props.name}</h6>
                 <p className="card-text">
                     {props.text}
                 </p>
-                <button className="direct-to-single-view" onClick={(e) => handleclick(props.artist_id)}> Go to </button>
+                <button className="direct-to btn btn-outline-light" onClick={(e) => handleclick(props.artist_id)}> More... </button>
             </div>
         </div>
     )

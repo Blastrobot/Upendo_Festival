@@ -126,7 +126,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           next_page: data.next,
         });
       },
-      insertNews: (data) => {
+      inserttNews: (data) => {
         setStore({
           news: getStore().news.concat(data.results),
           next_page: data.next,

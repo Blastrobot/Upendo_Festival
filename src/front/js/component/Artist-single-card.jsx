@@ -26,8 +26,8 @@ export const Artist_single_card = (props) => {
                 <p className="description">
                     {props.text}
                 </p>
-                <Link to={props.music_url}>
-                    <button className="direct-to-spotify"> Play </button> </Link>
+                {/* <Link to={props.music_url}>
+                    <button className="direct-to-spotify"> Play </button> </Link> */}
 
             </div>
         </div>
