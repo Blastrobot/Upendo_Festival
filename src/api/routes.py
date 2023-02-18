@@ -9,18 +9,14 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+import cloudinary
+import cloudinary.uploader
+
+
 
 api = Blueprint('api', __name__)
 
 
-# @api.route('/hello', methods=['POST', 'GET'])
-# def handle_hello():
-
-#     response_body = {
-#         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-#     }
-
-#     return jsonify(response_body), 200
 
 
 @api.route('/tickets', methods=['GET'])
@@ -40,8 +36,7 @@ def get_tickets():
 @jwt_required()
 def get_user_tickets():
     user = User.query.filter(
-        User.is_active == True,
-        User.is_admin == True
+        User.is_active == True
     ).first()
     if user:
         tickets = Tickets.query.get(user_id)
@@ -108,15 +103,19 @@ def create_news(user_id):
     admin = User.query.filter(User.is_active == True,
                               User.is_admin == True).first()
     if admin:
-        request_body = request.get_json()
-        news = News(title=request_body['title'],
-                    body=request_body['body'],
-                    image_url=request_body['image_url'],
-                    poster_news=user_id)
+     title = request.form.get("title")
+     body = request.form.get("body")
+     file = request.files['file']
+     upload_result = cloudinary.uploader.upload(file)
+     photo_url = upload_result ['url']
+     news = News(title = title,
+                 body = body,
+                 image_url = photo_url,
+                 poster_news = user_id)
 
-        db.session.add(news)
-        db.session.commit()
-        return jsonify(request_body), 200
+     db.session.add(news)
+     db.session.commit()
+     return jsonify({"news": news.serialize()}),  200
     return jsonify("user doesn't have permission"), 411
 
 
@@ -126,16 +125,23 @@ def update_news(news_id):
     admin = User.query.filter(User.is_active == True,
                               User.is_admin == True).first()
     if admin:
-        request_body = request.get_json()
-        news = News.query.get(news_id)
-        if news is None:
-            raise APIException('News not found', status_code=404)
-        if "title" or "body" or "image_url" in request_body:
-            news.title = request_body["title"]
-            news.body = request_body["body"]
-            news.image_url = request_body["image_url"]
+     file = request.files['file']
+     if file is None:
+         return {"error": "ha ocurrido un error"}, 400
+     upload_result = cloudinary.uploader.upload(file)
+     title = request.form.get('title')
+     body = request.form.get('body')
+     photo_url = upload_result ['url']
+     news = News.query.get(news_id)
+     if news is None:
+         raise APIException('News not found', status_code=404)
+     if "title" or "body" or "image_url" in request_body:
+        news.title = title
+        news.body = body
+        news.image_url = photo_url
+
         db.session.commit()
-        return jsonify(request_body), 200
+        return jsonify({"msg": "news modified", "news": news.serialize()}),200
     return jsonify("user doesn't have permission"), 411
 
 
@@ -145,10 +151,10 @@ def delete_news(news_id):
     admin = User.query.filter(User.is_active == True,
                               User.is_admin == True).first()
     if admin:
-        news = News.query.get(news_id)
-        response_body = {"message": "deleted succesfully"}
-        db.session.delete(news)
-        db.session.commit()
+     news = News.query.get(news_id)
+     response_body = {"message": "deleted succesfully"}
+     db.session.delete(news)
+     db.session.commit()
     return jsonify(response_body), 200
 
 
@@ -177,15 +183,27 @@ def getArtistById(id):
 def update__artist(artist_id):
     admin = User.query.filter(User.is_active == True, User.is_admin == True ).first()
     if admin:
-        request_body = request.get_json()
+        file = request.files['file']
+        if file is None:
+           return {"error": "ha ocurrido un error"}, 400
+        upload_result = cloudinary.uploader.upload(file)
+        photo_url = upload_result['url']
+        name = request.form.get('name')
+        description = request.form.get('description')
+        music_url = request.form.get('music_url')
         artist = Artist.query.get(artist_id)
         if artist is None:
             raise APIException('Artist not found', status_code=404)
-        if "description" and "name" and "imageurl" and "musicUrl" in request_body:
-            artist.description = request_body["description"]
-            artist.name = request_body["name"]
-            artist.imageUrl = request_body["imageUrl"]
-            artist.musicUrl = request_body["musicUrl"]
+        if "description" and "name" and "image_url" and "music_url" in request.form:
+            upload_result = cloudinary.uploader.upload(file)
+            artist.description = description
+            artist.name = name
+            artist.image_url = photo_url
+            artist.musicUrl = music_url
         db.session.commit()
-        return jsonify(request_body), 200
+        return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
     return jsonify("user doesn't have permission"), 411
+
+
+
+
