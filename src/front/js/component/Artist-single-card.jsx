@@ -1,8 +1,9 @@
 
-import { Link } from 'react-router-dom';
+
 
 import React from "react";
 
+import "../../styles/single-card.css";
 
 
 
@@ -19,16 +20,18 @@ export const Artist_single_card = (props) => {
 
     return (
 
-        <div id="artis-grid-card" className="card col-12 col-md-6 col-lg-4 flex-row">
-            <p className="artist-name">{props.artist_name}</p>
-            <img src={props.image} onError={handleOnErrorImg} className="card-img col-12" />
-            <div className="card-body">
+        <div className="card-single d-flex flex-row justify-content-center">
+            <h1 className="artist-name">{props.name}</h1>
+            <img src={props.image} onError={handleOnErrorImg} className="single-card-img col-12" />
+            <div className="cards-body">
                 <p className="description">
                     {props.text}
                 </p>
-                {/* <Link to={props.music_url}>
-                    <button className="direct-to-spotify"> Play </button> </Link> */}
 
+            </div>
+            <div className="d-flex align-items-center justify-content-start">
+                <a href={props.music} target="_blank">
+                    <button className="direct-to-spotify"> Play </button> </a>
             </div>
         </div>
     )

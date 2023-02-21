@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import "../../styles/card.css";
+import { Context } from "../store/appContext";
 
 
 export const Artist_card = (props) => {
 
+    const { store, actions } = useContext(Context);
 
 
 
@@ -18,6 +20,7 @@ export const Artist_card = (props) => {
     const navigate = useNavigate();
 
     const handleclick = (artist_id) => {
+
         navigate(`/artist/${artist_id}`)
 
     };
@@ -27,15 +30,19 @@ export const Artist_card = (props) => {
 
     return (
 
-        <div className="card d-flex flex-col align-items-center">
+        <div className="cards d-flex flex-col align-items-center">
+
             <img className="artist-image" src={props.image} onError={handleOnErrorImg} />
-            <div className="hidden-menú">
-                <h6 className="artist-name">{props.name}</h6>
+
+            <div className="hidden-menú dd-flex flex-col text-center">
+                <h4 id="artist-name">{props.name}</h4>
                 <p className="card-text">
                     {props.text}
                 </p>
-                <button className="direct-to btn btn-outline-light" onClick={(e) => handleclick(props.artist_id)}> More... </button>
+                <button className="direct-to btn  btn-outline-light" onClick={(e) => handleclick(props.artist_id)}> More... </button>
+
             </div>
+
         </div>
     )
 

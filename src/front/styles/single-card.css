@@ -1,0 +1,23 @@
+.container-single {
+  width: 900px;
+  height: 100vh;
+}
+.card-single {
+  width: 600px;
+  height: 600px;
+  margin-left: 120px;
+}
+.single-card-img {
+  object-fit: cover;
+}
+button {
+  background-color: rgba(240, 248, 255, 0);
+  border: none;
+}
+.cards-body {
+  width: 300px;
+  object-fit: cover;
+}
+.description {
+  width: 100px;
+}

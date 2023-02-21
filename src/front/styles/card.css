@@ -1,11 +1,54 @@
-.card {
-  width: 300px;
-  height: 300px;
+.cards {
+  width: 400px;
+  height: 400px;
   margin: auto;
-  object-fit: contain;
+  object-fit: cover;
+}
+.container {
+  object-fit: fill;
 }
 .artist-image {
-  width: 230px;
-  height: 230px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
+}
+.hidden-menú {
+  position: absolute;
+  margin-top: 250px;
+  margin-bottom: 250px;
+  width: 400px;
+  height: 100px;
+  background-size: fill;
+  background-color: rgba(0, 0, 0, 0);
+
+  color: #ffffff00;
+}
+.hidden-menú:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+.btn {
+  opacity: 0;
+}
+.btn:hover {
+  opacity: 1;
+}
+
+.card-grid {
+  width: 1400px;
+  height: 2000;
+  flex-wrap: wrap;
+  gap: 4px 4px;
+
+  justify-content: center;
+  align-self: center;
+}
+
+.line-up {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  padding-right: 100px;
+  margin-bottom: 30px;
+  margin-right: 180px;
 }
