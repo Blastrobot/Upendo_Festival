@@ -50,29 +50,32 @@ export const Artist_grid = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="d-flex flex-row">
+    <>
+      <div className="top-container d-flex flex-row justify-content-between align-items-end">
+        <LineUp text={"Line-Up"} />
         <LineUp text={"Line-Up"} />
         <LineUp text={"Line-Up"} />
         <LineUp text={"Line-Up"} />
       </div>
-      <div className="card-grid d-flex flex-row justify-content-center ">
-        {loading ? (
-          <Spinner />
-        ) : (
-          artists.map((artist, index) => {
-            return (
-              <div key={index}>
-                <Artist_card
-                  image={artist.image_url}
-                  name={artist.name}
-                  artist_id={index}
-                />
-              </div>
-            );
-          })
-        )}
+      <div className="container">
+        <div className="card-grid d-flex flex-row justify-content-center ">
+          {loading ? (
+            <Spinner />
+          ) : (
+            artists.map((artist, index) => {
+              return (
+                <div key={index}>
+                  <Artist_card
+                    image={artist.image_url}
+                    name={artist.name}
+                    artist_id={index}
+                  />
+                </div>
+              );
+            })
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };

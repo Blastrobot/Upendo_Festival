@@ -34,12 +34,10 @@ export const Artist_card = (props) => {
 
             <img className="artist-image" src={props.image} onError={handleOnErrorImg} />
 
-            <div className="hidden-menú dd-flex flex-col text-center">
-                <h4 id="artist-name">{props.name}</h4>
-                <p className="card-text">
-                    {props.text}
-                </p>
-                <button className="direct-to btn  btn-outline-light" onClick={(e) => handleclick(props.artist_id)}> More... </button>
+            <div className="hidden-menú d-flex flex-col  ">
+
+
+                <button className="direct-to btn   btn btn-outline-dark " onClick={(e) => handleclick(props.artist_id)}> {props.name} </button>
 
             </div>
 

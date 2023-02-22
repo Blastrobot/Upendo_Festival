@@ -5,7 +5,7 @@ import React from "react";
 
 import "../../styles/single-card.css";
 
-
+import { AiFillFastForward } from "react-icons/ai"
 
 
 
@@ -21,7 +21,7 @@ export const Artist_single_card = (props) => {
     return (
 
         <div className="card-single d-flex flex-row justify-content-center">
-            <h1 className="artist-name">{props.name}</h1>
+            <h1 className="artist-name justify-self-start">{props.name}</h1>
             <img src={props.image} onError={handleOnErrorImg} className="single-card-img col-12" />
             <div className="cards-body">
                 <p className="description">
@@ -29,9 +29,12 @@ export const Artist_single_card = (props) => {
                 </p>
 
             </div>
-            <div className="d-flex align-items-center justify-content-start">
+            <div className="play-button d-flex align-items-end justify-content-end">
                 <a href={props.music} target="_blank">
-                    <button className="direct-to-spotify"> Play </button> </a>
+                    <button className="direct-to-spotify"> Play </button>
+                    <AiFillFastForward />
+
+                </a>
             </div>
         </div>
     )

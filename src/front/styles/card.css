@@ -20,6 +20,7 @@
   height: 100px;
   background-size: fill;
   background-color: rgba(0, 0, 0, 0);
+  justify-content: center;
 
   color: #ffffff00;
 }
@@ -32,6 +33,10 @@
 }
 .btn:hover {
   opacity: 1;
+  background-color: rgba(0, 0, 0, 0.401);
+  color: #fff;
+  border-style: none;
+  font-size: 25px;
 }
 
 .card-grid {
@@ -48,7 +53,13 @@
   display: flex;
   flex-direction: row;
   width: 300px;
-  padding-right: 100px;
+  padding-left: 100px;
   margin-bottom: 30px;
   margin-right: 180px;
+}
+.top-container {
+  padding-left: 50px;
+}
+.direct-to {
+  size: 80%;
 }

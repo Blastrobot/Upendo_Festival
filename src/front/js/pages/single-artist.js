@@ -26,15 +26,15 @@ export const ArtistSingleView = () => {
     setNewartist(artists[artist_ID]);
 
     setLoading(false);
-  }, []);
+  }, [setNewartist]);
 
   console.log(newArtist);
 
   return (
     <div className="main">
-      <div className="d-flex flex-row">
+      <div className="Back-container d-flex flex-row">
         <button onClick={handleClick}>
-          <LineUp text={"Back to Line_Up"} />
+          <LineUp text={"Artists menu"} />
         </button>
       </div>
       <div className="d-flex flex-row justify-content-center">
