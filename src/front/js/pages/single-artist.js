@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Artist_single_card } from "../component/Artist-single-card.jsx";
 import { Context } from "../store/appContext";
 import "../../styles/single-card.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { LineUp } from "../component/Line-Up.jsx";
 
 export const ArtistSingleView = () => {
@@ -26,11 +26,13 @@ export const ArtistSingleView = () => {
     setNewartist(artists[artist_ID]);
 
     setLoading(false);
-  }, [setNewartist]);
+  }, []);
 
   console.log(newArtist);
 
-  return (
+  return !newArtist ? (
+    <Navigate to="/artist" />
+  ) : (
     <div className="main">
       <div className="Back-container d-flex flex-row">
         <button onClick={handleClick}>

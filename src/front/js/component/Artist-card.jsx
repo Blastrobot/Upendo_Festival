@@ -7,7 +7,7 @@ import { Context } from "../store/appContext";
 
 export const Artist_card = (props) => {
 
-    const { store, actions } = useContext(Context);
+
 
 
 

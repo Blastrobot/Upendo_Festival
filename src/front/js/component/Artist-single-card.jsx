@@ -12,6 +12,11 @@ import { AiFillFastForward } from "react-icons/ai"
 
 export const Artist_single_card = (props) => {
 
+
+
+
+
+
     const handleOnErrorImg = (e) => {
         e.target.src = "https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png";
     };

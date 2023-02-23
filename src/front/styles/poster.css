@@ -1,0 +1,17 @@
+.poster-container {
+  width: 100vw;
+  height: 820x;
+  object-fit: cover;
+  flex-wrap: wrap;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.poster {
+  width: 1220px;
+  height: 1100x;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}

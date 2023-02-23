@@ -34,7 +34,7 @@ export const NewsCard = (props) => {
                 <div className="news-body">
                     <h1 className="news-title">{props.title}</h1>
                     <p>{props.body}</p>
-                    <button type="button" className="news-btn btn-dark" onClick={handleClick}> Read more... </button>
+                    <button type="button" className="news-btn d-flex flex-row  btn-dark" onClick={handleClick}> Read more... </button>
 
                 </div>
 
