@@ -170,8 +170,9 @@ def getAllArtist():
 
 @api.route("/artist/<int:id>", methods = ["GET"])
 def getArtistById(id):
-    artist = db.get_or_404(Artist, id)
-    response = artist.serialize()
+    # artist = db.get_or_404(Artist, id)
+    artist = Artist.query.filter(id)
+    response = [artist.serialize() for artist in artists]
     response_body = {"message": "ok",
                      "results": response
     }
