@@ -40,7 +40,7 @@ export const NewsGrid = () => {
     useEffect(() => {
         news.length == 0
             ? getNews(
-                "https://3001-blastrobot-finalproject-5qsc3yhr9p7.ws-eu87.gitpod.io/api/news"
+                process.env.BACKEND_URL + "/api/news"
             )
             : null;
     }, []);

@@ -43,9 +43,7 @@ export const Artist_grid = () => {
 
   useEffect(() => {
     artists.length == 0
-      ? getArtists(
-          "https://3001-blastrobot-finalproject-5qsc3yhr9p7.ws-eu87.gitpod.io/api/artist"
-        )
+      ? getArtists(process.env.BACKEND_URL + "/api/artist")
       : null;
   }, []);
 
