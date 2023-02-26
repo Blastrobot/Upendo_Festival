@@ -13,6 +13,7 @@ import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 import { Artist_card } from "./component/Artist-card.jsx";
 import { Artist_grid } from "./pages/artist.js";
+import { AllNews } from "./pages/news.js";
 import { ArtistSingleView } from "./pages/single-artist";
 
 //create your first component
@@ -25,7 +26,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar/>
+          <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Signup />} path="/signup" />
@@ -33,6 +34,7 @@ const Layout = () => {
             <Route element={<Tickets />} path="/tickets" />
             <Route element={<Artist_grid />} path="/artist" />
             <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
+            <Route element={<AllNews />} path="/news" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>

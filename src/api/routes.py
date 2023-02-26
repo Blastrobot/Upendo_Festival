@@ -83,6 +83,15 @@ def show_news():
                      }
     return jsonify(response_body), 200
 
+@api.route('/news/<int:news_id>', methods=['GET'])
+def show_news_byId(news_id):
+    news = News.query.filter(news_id)
+    response = [news.serialize() for news in news]
+    response_body = {"message": "ok",
+                     "results": response
+                     }
+    return jsonify(response_body), 200
+
 
 @api.route('/admin/news', methods=['GET'])
 @jwt_required()

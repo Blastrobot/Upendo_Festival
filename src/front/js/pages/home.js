@@ -10,8 +10,8 @@ export const Home = () => {
 
   return (
     <div>
-      <Video />
       <Poster />
+      <Video />
 
       <NewsGrid />
     </div>

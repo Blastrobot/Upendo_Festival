@@ -36,7 +36,7 @@ export const ArtistSingleView = () => {
     <div className="main">
       <div className="Back-container d-flex flex-row">
         <button onClick={handleClick}>
-          <LineUp text={"Artists menu"} />
+          <LineUp text={"Back to grid"} />
         </button>
       </div>
       <div className="d-flex flex-row justify-content-center">
