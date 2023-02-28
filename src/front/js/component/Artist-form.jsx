@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AdminArtistsForm = (props) => {
   const [desc, setDesc] = useState("");
   const [music, setMusic] = useState("");
   const [file, setFile] = useState();
-  const {store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   const { artist_ID } = useParams();
 
@@ -32,7 +33,7 @@ export const AdminArtistsForm = (props) => {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${store.token}`,
-        "Access-Cotrol-Allow-Origin" : "*",
+        "Access-Cotrol-Allow-Origin": "*",
       },
       body: data
     };
@@ -45,6 +46,8 @@ export const AdminArtistsForm = (props) => {
     putArtist(
       process.env.BACKEND_URL + "/api/admin/artist/" + artist_ID
     );
+    navigate("/admin");
+
   };
 
   return (

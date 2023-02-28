@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AdminNewsCreatePanel = () => {
@@ -7,22 +7,23 @@ export const AdminNewsCreatePanel = () => {
   const [body, setBody] = useState("");
   const [filee, setFile] = useState(null);
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   const postNew = async (url) => {
-    var data = new FormData()
-    data.append("title", title)
-    data.append("body", body)
-    data.append("file", filee)
+    var data = new FormData();
+    data.append("title", title);
+    data.append("body", body);
+    data.append("file", filee);
     const request = {
       method: "POST",
       headers: {
         Authorization: `Bearer ${store.token}`,
-        "Access-Cotrol-Allow-Origin" : "*",
+        "Access-Cotrol-Allow-Origin": "*",
       },
-      body: data
+      body: data,
     };
     const response = await fetch(url, request);
-    console.log(response)
+    console.log(response);
   };
 
   const handleTitleChange = (event) => {
@@ -34,17 +35,16 @@ export const AdminNewsCreatePanel = () => {
   };
 
   const handleFileChange = (event) => {
-      setFile(event.target.files[0]);
+    setFile(event.target.files[0]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("aqui")
-    postNew(
-      process.env.BACKEND_URL + "/api/admin/news"
-    );
+
+    postNew(process.env.BACKEND_URL + "/api/admin/news");
+    navigate("/admin");
   };
-  
+
   return (
     <div className="mx-5">
       <Link to="/admin" style={{ textDecoration: "none" }}>

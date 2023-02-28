@@ -4,14 +4,14 @@ import { AdminArtistsForm } from "../component/Artist-form.jsx";
 
 export const AdminArtistsPanel = () => {
   const [artist, setArtist] = useState({});
-  const {artist_ID} = useParams();
+  const { artist_ID } = useParams();
 
   const getArtist = async (url) => {
     const headers = new Headers();
     headers.append("Access-Control-Allow-Origin", "*");
     const request = {
       method: "GET",
-      headers: headers
+      headers: headers,
     };
 
     const response = await fetch(url, request);
@@ -22,12 +22,10 @@ export const AdminArtistsPanel = () => {
   };
 
   useEffect(() => {
-    console.log("aqui")
-    getArtist(
-      process.env.BACKEND_URL + "/api/artist/" + artist_ID
-    );
-    console.log(artist)
-  }, [])
+    console.log("aqui");
+    getArtist(process.env.BACKEND_URL + "/api/artist/" + artist_ID);
+    console.log(artist);
+  }, []);
 
   return (
     <div className="mx-5">
@@ -36,9 +34,9 @@ export const AdminArtistsPanel = () => {
       </Link>
       <hr className="mx-4" />
       <AdminArtistsForm
-      name={artist.name}
-      desc={artist.description}
-      musicUrl={artist.musicUrl}
+        name={artist.name}
+        desc={artist.description}
+        musicUrl={artist.music_url}
       />
     </div>
   );

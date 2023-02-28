@@ -1,5 +1,5 @@
 
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -8,15 +8,15 @@ import "../../styles/news-card.css";
 
 
 export const NewsCardAdmin = (props) => {
-    const {store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     const delNew = async (url) => {
         const request = {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${store.token}`,
-            "Access-Cotrol-Allow-Origin" : "*",
-          },
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${store.token}`,
+                "Access-Cotrol-Allow-Origin": "*",
+            },
         };
         const response = await fetch(url, request);
         console.log(response)
@@ -38,8 +38,6 @@ export const NewsCardAdmin = (props) => {
     }
 
     return (
-
-
         <div >
             <picture className="picture">
                 <source media="(min-width: 0px)" srcSet={props.image} />
@@ -63,6 +61,8 @@ export const NewsCardAdmin = (props) => {
 
 
         </div>
+
+
     )
 
 

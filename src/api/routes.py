@@ -88,15 +88,6 @@ def getNewsById(id):
                      "results": response
     }
 
-@api.route('/news/<int:news_id>', methods=['GET'])
-def show_news_byId(news_id):
-    news = News.query.filter(news_id)
-    response = [news.serialize() for news in news]
-    response_body = {"message": "ok",
-                     "results": response
-                     }
-
-    return jsonify(response_body), 200
 
 
 @api.route('/admin/news', methods=['GET'])
@@ -214,7 +205,7 @@ def update__artist(artist_id):
             artist.description = description
             artist.name = name
             artist.image_url = photo_url
-            artist.musicUrl = music_url
+            artist.music_url = music_url
             db.session.commit()
             return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
     return jsonify("user doesn't have permission"), 411

@@ -52,8 +52,8 @@ export const AllNews = () => {
         <LineUp text={"All news"} />
       </div>
 
-      <div className="All-News-container d-flex flex-row justify-content-center">
-        <div className="single-news d-flex flex-row">
+      <div className="all-News-container d-flex flex-row justify-content-center">
+        <div className="news-box d-flex flex-row ">
           {loading ? (
             <Spinner />
           ) : (

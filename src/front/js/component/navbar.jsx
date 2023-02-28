@@ -10,6 +10,7 @@ export const Navbar = () => {
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 
+
 	const checkout = async () => {
 		await fetch("https://3001-blastrobot-finalproject-8zt3fz6eteh.ws-eu88.gitpod.io/create-checkout-session", {
 			method: "POST",
@@ -26,13 +27,25 @@ export const Navbar = () => {
 
 	const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0)
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		actions.login(email, password).then(navigate("/"));
 	};
 
-	const handlePrice = (id) => {
-		actions.getTotalCost(id)
+
+
+	const handleLogout = (evt) => {
+		evt.preventDefault();
+
+		actions.UserLogout();
+		navigate("/");
+
 	}
+
+
+
+
+
 
 	return (
 		<>
@@ -48,9 +61,9 @@ export const Navbar = () => {
 							</button>
 							<div className="collapse navbar-collapse" id="navbarNav">
 								<div className="navbar-nav">
-									<a className="nav-link text-light" aria-current="page" href="#">Home</a>
-									<a className="nav-link text-light" href="#">Artists</a>
-									<a className="nav-link text-light" href="#">News</a>
+									<Link to="/" className="nav-link text-light" aria-current="page" href="#">Home</Link>
+									<Link to="/artist" className="nav-link text-light" href="#">Artists</Link>
+									<Link to="/news" className="nav-link text-light" href="#">News</Link>
 									<Link to="/tickets" className="nav-link text-light">Tickets</Link>
 								</div>
 							</div>
@@ -70,7 +83,7 @@ export const Navbar = () => {
 											<div id="passwordHelp" className="form-text my-3 mx-3">We'll never share your password or ask for it.</div>
 										</div>
 										<hr className="dropdown-divider" />
-										<button type="submit" onClick={handleSubmit} className="btn btn-outline-dark mt-3 mx-5">Submit</button>
+										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-3 mx-5">Submit</button>
 									</form>
 								</div>
 							</div>
@@ -89,13 +102,13 @@ export const Navbar = () => {
 							</button>
 							<div className="collapse navbar-collapse" id="navbarNav">
 								<div className="navbar-nav">
-									<a className="nav-link text-light" aria-current="page" href="#">Home</a>
-									<a className="nav-link text-light" href="#">Artists</a>
-									<a className="nav-link text-light" href="#">News</a>
+									<Link to="/" className="nav-link text-light" aria-current="page" href="#">Home</Link>
+									<Link to="/artist" className="nav-link text-light" href="#">Artists</Link>
+									<Link to="/news" className="nav-link text-light" href="#">News</Link>
 									{store.admin == true ? (
 										<Link to="/admin" className="nav-link text-light">Admin</Link>)
 										:
-										null
+										<></>
 									}
 									<Link to="/tickets" className="nav-link text-light">Tickets</Link>
 								</div>
@@ -155,7 +168,7 @@ export const Navbar = () => {
 								</div>
 							</div>
 							<div>
-								<button onClick={() => actions.UserLogout()} className="btn text-light border border-info rounded">Logout</button>
+								<button onClick={(evt) => { handleLogout(evt) }} className="btn text-light border border-info rounded">Logout</button>
 							</div>
 						</div>
 					</nav>

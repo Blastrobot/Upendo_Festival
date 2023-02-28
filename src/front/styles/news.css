@@ -26,3 +26,15 @@
   margin-right: 5px;
   padding-left: 10px;
 }
+.news-box {
+  width: 1400px;
+  height: 1200px;
+  flex-wrap: wrap;
+  gap: 4px 4px;
+  padding-bottom: 400px;
+  justify-content: center;
+}
+.all-News-container {
+  overflow: hidden;
+  height: 4600px;
+}

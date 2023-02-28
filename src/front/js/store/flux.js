@@ -11,19 +11,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         {
           id: "1",
           title: "Volta Ticket",
-          price: 59.99
+          price: 59.99,
         },
         {
           id: "2",
           title: "Nile Ticket",
-          price: 119.99
+          price: 119.99,
         },
         {
           id: "3",
           title: "Congo Ticket",
-          price: 199.99
+          price: 199.99,
         },
-      ]
+      ],
     },
     actions: {
       login: async (email, password) => {
@@ -47,8 +47,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (resp.status === 200) {
             const data = await resp.json();
             localStorage.setItem("token", data.access_token);
+            localStorage.setItem("admin", data.admin);
             setStore({ token: data.access_token });
-            setStore({ admin: data.admin })
+            setStore({ admin: data.admin });
 
             // adminValidation() evaluar si tengo que ejecutar todo lo necesario para el admin
             // el is_admin lo puedo traer dentro del json o dentro del token que tengo que averiguar
@@ -139,7 +140,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       syncToken: () => {
         const token = localStorage.getItem("token");
+        const admin = localStorage.getItem("admin");
         token && token != "" && token != undefined && setStore({ token });
+        admin && admin != "" && admin != undefined && setStore({ admin });
       },
 
       insertArtists: (data) => {
@@ -154,9 +157,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           next_page: data.next,
         });
       },
-      
+
       getProductData: (id) => {
-        let productData = productsArray.find(product => product.id === id);
+        let productData = productsArray.find((product) => product.id === id);
 
         if (productData == undefined) {
           console.log("Product does not exist for specific ID:" + id);
@@ -164,7 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
 
         return productData;
-      }
+      },
 
       // getProductData: (id) => {
       //   const store = getStore();

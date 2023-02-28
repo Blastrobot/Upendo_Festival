@@ -10,7 +10,7 @@ import { Tickets } from "./pages/tickets";
 import { Cancel } from "./pages/cancel";
 import { Success } from "./pages/success";
 import { Checkout } from "./pages/checkout";
-import { ProductDisplay } from "./pages/checkout"
+import { ProductDisplay } from "./pages/checkout";
 
 import injectContext from "./store/appContext";
 import { CartProvider } from "./store/cartContext";
@@ -35,27 +35,36 @@ const Layout = () => {
 
   return (
     <div>
-      <CartProvider >
+      <CartProvider>
         <BrowserRouter basename={basename}>
           <ScrollToTop>
             <Navbar />
             <Routes>
               <Route element={<Home />} path="/" />
               <Route element={<Signup />} path="/signup" />
-              <Route element={<Admin />} path="/admin" />
               <Route element={<Tickets />} path="/tickets" />
               <Route element={<Artist_grid />} path="/artist" />
               <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
 
               <Route element={<AdminPanel />} path="/admin" />
-              <Route element={<AdminNewsUpdatePanel />} path="/admin/news/update/:news_ID" />
-              <Route element={<AdminArtistsPanel />} path="/admin/artist/:artist_ID"/>
-              <Route element={<AdminNewsCreatePanel />} path="/admin/news/create"/>
+              <Route
+                element={<AdminNewsUpdatePanel />}
+                path="/admin/news/update/:news_ID"
+              />
+              <Route
+                element={<AdminArtistsPanel />}
+                path="/admin/artist/:artist_ID"
+              />
+              <Route
+                element={<AdminNewsCreatePanel />}
+                path="/admin/news/create"
+              />
 
               <Route element={<AllNews />} path="/news" />
 
               <Route element={<h1>Not found!</h1>} />
             </Routes>
+            <Footer />
           </ScrollToTop>
         </BrowserRouter>
       </CartProvider>

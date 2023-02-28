@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AdminNewsForm = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [filee, setFile] = useState();
-  const {store, actions } = useContext(Context);
-
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
   const { news_ID } = useParams();
 
   const handleTitleChange = (event) => {
@@ -31,7 +31,7 @@ export const AdminNewsForm = (props) => {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${store.token}`,
-        "Access-Cotrol-Allow-Origin" : "*",
+        "Access-Cotrol-Allow-Origin": "*",
       },
       body: data
     };
@@ -44,42 +44,43 @@ export const AdminNewsForm = (props) => {
     putNew(
       process.env.BACKEND_URL + "/api/admin/news/" + news_ID
     );
+    navigate("/admin");
   };
 
   return (
-      <form className="mx-4" onSubmit={(e) => handleSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">Title</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            defautvalue={props.title}
-            placeholder={props.title}
-            onChange={handleTitleChange}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleFormControlTextarea1">Body</label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            defautvalue={props.body}
-            placeholder={props.body}
-            onChange={handleBodyChange}
-          ></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">Select Image</label>
-          <input
-            type="file"
-            className="form-control"
-            onChange={handleFileChange}
-          ></input>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+    <form className="mx-4" onSubmit={(e) => handleSubmit(e)}>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">Title</label>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleFormControlInput1"
+          defautvalue={props.title}
+          placeholder={props.title}
+          onChange={handleTitleChange}
+        ></input>
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlTextarea1">Body</label>
+        <textarea
+          className="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          defautvalue={props.body}
+          placeholder={props.body}
+          onChange={handleBodyChange}
+        ></textarea>
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">Select Image</label>
+        <input
+          type="file"
+          className="form-control"
+          onChange={handleFileChange}
+        ></input>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
   );
 };
 

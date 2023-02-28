@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Artist_card_admin } from "../component/Artist-card-admin.jsx";
-import { NewsCardAdmin } from "../component/News-card-admin.jsx"
+import { NewsCardAdmin } from "../component/News-card-admin.jsx";
 import { useNavigate } from "react-router-dom";
-
 
 export const AdminPanel = () => {
   const { store, actions } = useContext(Context);
@@ -14,7 +13,7 @@ export const AdminPanel = () => {
     headers.append("Access-Control-Allow-Origin", "*");
     const request = {
       method: "GET",
-      headers: headers
+      headers: headers,
     };
 
     const response = await fetch(url, request);
@@ -34,7 +33,7 @@ export const AdminPanel = () => {
 
     const request = {
       method: "GET",
-      headers: headers
+      headers: headers,
     };
 
     const response = await fetch(url, request);
@@ -48,23 +47,19 @@ export const AdminPanel = () => {
   const news = store.news;
 
   useEffect(() => {
-    if(news.length == 0){
-      getNews(
-        process.env.BACKEND_URL + "/api/news"
-      );
+    if (news.length == 0) {
+      getNews(process.env.BACKEND_URL + "/api/news");
     }
-    if(artists.length == 0){
-      getArtists(
-        process.env.BACKEND_URL + "/api/artist"
-      );
+    if (artists.length == 0) {
+      getArtists(process.env.BACKEND_URL + "/api/artist");
     }
   }, []);
 
-  const navigate = new useNavigate()
+  const navigate = new useNavigate();
 
   const handleClick = () => {
-    navigate("/admin/news/create")
-  }
+    navigate("/admin/news/create");
+  };
   return (
     <div>
       <h1 className="text-center">ADMIN PANEL</h1>
@@ -72,23 +67,24 @@ export const AdminPanel = () => {
       <div>
         <div>
           <div className="d-flex">
-          <h3>News</h3><button onClick={(e) => handleClick()}>+ Create new</button>
+            <h3>News</h3>
+            <button onClick={(e) => handleClick()}>+ Create new</button>
           </div>
           <div className="row">
-          <div className="single-news d-flex flex-row">
-            {news.map((news, index) => {
-              return (
-                <div key={index}>
-                  <NewsCardAdmin
-                    id={news.id}
-                    image={news.image_url}
-                    title={news.title}
-                    body={news.body}
+            <div className="single-news d-flex flex-row">
+              {news.map((news, index) => {
+                return (
+                  <div key={index}>
+                    <NewsCardAdmin
+                      id={news.id}
+                      image={news.image_url}
+                      title={news.title}
+                      body={news.body}
                     />
-                </div>
-              );
-            })}
-          </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
         <div>
@@ -103,7 +99,8 @@ export const AdminPanel = () => {
                   <Artist_card_admin
                     image={artist.image_url}
                     name={artist.name}
-                    artist_id={artist.ArtistId}
+                    artist_id={artist.id}
+                    musicUrl={artist.music_url}
                   />
                 </div>
               );
