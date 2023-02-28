@@ -7,6 +7,23 @@ const getState = ({ getStore, getActions, setStore }) => {
       artists: [],
       news: [],
       next_page: [],
+      productsArray: [
+        {
+          id: "1",
+          title: "Volta Ticket",
+          price: 59.99
+        },
+        {
+          id: "2",
+          title: "Nile Ticket",
+          price: 119.99
+        },
+        {
+          id: "3",
+          title: "Congo Ticket",
+          price: 199.99
+        },
+      ]
     },
     actions: {
       login: async (email, password) => {
@@ -31,7 +48,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             const data = await resp.json();
             localStorage.setItem("token", data.access_token);
             setStore({ token: data.access_token });
-            setStore({ admin: data.admin });
+            setStore({ admin: data.admin })
+
             // adminValidation() evaluar si tengo que ejecutar todo lo necesario para el admin
             // el is_admin lo puedo traer dentro del json o dentro del token que tengo que averiguar
             return true;
@@ -136,6 +154,30 @@ const getState = ({ getStore, getActions, setStore }) => {
           next_page: data.next,
         });
       },
+      
+      getProductData: (id) => {
+        let productData = productsArray.find(product => product.id === id);
+
+        if (productData == undefined) {
+          console.log("Product does not exist for specific ID:" + id);
+          return undefined;
+        }
+
+        return productData;
+      }
+
+      // getProductData: (id) => {
+      //   const store = getStore();
+
+      //   const productData = store.productsArray.find(product => product.id === id);
+
+      //   if (productData == undefined) {
+      //     console.log("Product does not exist for specific ID:" + id);
+      //     return undefined;
+      //   }
+
+      //   return productData;
+      // }
     },
   };
 };

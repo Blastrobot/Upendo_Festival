@@ -7,9 +7,13 @@ import { Signup } from "./pages/signup";
 import { Admin } from "./pages/admin";
 import { Single } from "./pages/single";
 import { Tickets } from "./pages/tickets";
+import { Cancel } from "./pages/cancel";
+import { Success } from "./pages/success";
+import { Checkout } from "./pages/checkout";
+import { ProductDisplay } from "./pages/checkout"
+
 import injectContext from "./store/appContext";
-
-
+import { CartProvider } from "./store/cartContext";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -31,28 +35,30 @@ const Layout = () => {
 
   return (
     <div>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Routes>
-            <Route element={<Home />} path="/" />
-            <Route element={<Signup />} path="/signup" />
-            <Route element={<Admin />} path="/admin" />
-            <Route element={<Tickets />} path="/tickets" />
-            <Route element={<Artist_grid />} path="/artist" />
-            <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
+      <CartProvider >
+        <BrowserRouter basename={basename}>
+          <ScrollToTop>
+            <Navbar />
+            <Routes>
+              <Route element={<Home />} path="/" />
+              <Route element={<Signup />} path="/signup" />
+              <Route element={<Admin />} path="/admin" />
+              <Route element={<Tickets />} path="/tickets" />
+              <Route element={<Artist_grid />} path="/artist" />
+              <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
 
-            <Route element={<AdminPanel />} path="/admin" />
-            <Route element={<AdminNewsUpdatePanel />} path="/admin/news/update/:news_ID" />
-            <Route element={<AdminArtistsPanel />} path="/admin/artist/:artist_ID"/>
-            <Route element={<AdminNewsCreatePanel />} path="/admin/news/create"/>
+              <Route element={<AdminPanel />} path="/admin" />
+              <Route element={<AdminNewsUpdatePanel />} path="/admin/news/update/:news_ID" />
+              <Route element={<AdminArtistsPanel />} path="/admin/artist/:artist_ID"/>
+              <Route element={<AdminNewsCreatePanel />} path="/admin/news/create"/>
 
-            <Route element={<AllNews />} path="/news" />
+              <Route element={<AllNews />} path="/news" />
 
-            <Route element={<h1>Not found!</h1>} />
-          </Routes>
-        </ScrollToTop>
-      </BrowserRouter>
+              <Route element={<h1>Not found!</h1>} />
+            </Routes>
+          </ScrollToTop>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 };

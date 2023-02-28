@@ -5,6 +5,7 @@ import { NewsGrid } from "../component/Newsgrid.jsx";
 import { Video } from "../component/Video.jsx";
 import { Poster } from "../component/Poster.jsx";
 
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
@@ -12,7 +13,6 @@ export const Home = () => {
     <div>
       <Poster />
       <Video />
-
       <NewsGrid />
     </div>
   );

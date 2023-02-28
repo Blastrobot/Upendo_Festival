@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, redirect, request, jsonify, url_for, Blueprint
 from api.models import db, User, Tickets, News, Artist
 from api.utils import generate_sitemap, APIException
 
@@ -12,11 +12,7 @@ from flask_jwt_extended import jwt_required
 import cloudinary
 import cloudinary.uploader
 
-
-
 api = Blueprint('api', __name__)
-
-
 
 
 @api.route('/tickets', methods=['GET'])
@@ -189,9 +185,9 @@ def getAllArtist():
 
 @api.route("/artist/<int:id>", methods = ["GET"])
 def getArtistById(id):
-    # artist = db.get_or_404(Artist, id)
-    artist = Artist.query.filter(id)
-    response = [artist.serialize() for artist in artists]
+    artist = Artist.query.get(id)
+    response = artist.serialize()
+
     response_body = {"message": "ok",
                      "results": response
     }
@@ -222,7 +218,4 @@ def update__artist(artist_id):
             db.session.commit()
             return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
     return jsonify("user doesn't have permission"), 411
-
-
-
 
