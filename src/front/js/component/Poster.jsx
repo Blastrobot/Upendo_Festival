@@ -15,7 +15,7 @@ export const Poster = () => {
             <img
 
                 className="poster"
-                src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1677177417/NEW_CARTEL_wnskc9.png"
+                src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1677432566/NEW_CARTEL_VF_vpg329.png"
 
             />
 

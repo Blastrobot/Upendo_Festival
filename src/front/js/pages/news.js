@@ -2,21 +2,18 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
-import { NewsCard } from "./News-Card.jsx";
+import { NewsCard } from "../component/News-Card.jsx";
 
-import { Spinner } from "./Spinner.jsx";
+import { Spinner } from "../component/Spinner.jsx";
 
+import { LineUp } from "../component/Line-Up.jsx";
+import { EveryNews } from "../component/All-news-card.jsx";
+import "../../styles/news.css";
 
-import "../../styles/news-card.css";
-import { LineUp } from "./Line-Up.jsx";
-import { useNavigate } from "react-router-dom";
-
-export const NewsGrid = () => {
+export const AllNews = () => {
   const { store, actions } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
 
   const getNews = async (url) => {
     setLoading(true);
@@ -39,11 +36,6 @@ export const NewsGrid = () => {
       setLoading(false);
     }
   };
-  const handleClick = (evt) => {
-    evt.preventDefault();
-    navigate("/news")
-  }
-
 
   const news = store.news;
 
@@ -53,18 +45,22 @@ export const NewsGrid = () => {
 
   return (
     <div>
+      <div className="top-container d-flex flex-row justify-content-between align-items-end">
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
+      </div>
 
-      <div className="container-news d-flex flex-row justify-content-center">
-
-
+      <div className="All-News-container d-flex flex-row justify-content-center">
         <div className="single-news d-flex flex-row">
           {loading ? (
             <Spinner />
           ) : (
-            news.slice(0, 4).map((news, index) => {
+            news.map((news, index) => {
               return (
                 <div key={index}>
-                  <NewsCard
+                  <EveryNews
                     image={news.image_url}
                     title={news.title}
                     body={news.body}
@@ -74,15 +70,8 @@ export const NewsGrid = () => {
               );
             })
           )}
-          <div>
-            <button className="more-news" onClick={handleClick}>
-              <LineUp text={"More News"} />
-            </button>
-          </div>
         </div>
-
       </div>
-
     </div>
   );
 };
