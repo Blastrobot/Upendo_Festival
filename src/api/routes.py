@@ -83,6 +83,15 @@ def show_news():
                      }
     return jsonify(response_body), 200
 
+@api.route("/news/<int:id>", methods = ["GET"])
+def getNewsById(id):
+    news = db.get_or_404(News, id)
+    response = news.serialize()
+    response_body = {"message": "ok",
+                     "results": response
+    }
+    return jsonify(response_body), 200
+
 
 @api.route('/admin/news', methods=['GET'])
 @jwt_required()
@@ -97,9 +106,9 @@ def show_admin_news():
     return jsonify(response_body), 200
 
 
-@api.route('/admin/news/<int:user_id>', methods=['POST'])
+@api.route('/admin/news/', methods=['POST'])
 @jwt_required()
-def create_news(user_id):
+def create_news():
     admin = User.query.filter(User.is_active == True,
                               User.is_admin == True).first()
     if admin:
@@ -107,11 +116,11 @@ def create_news(user_id):
      body = request.form.get("body")
      file = request.files['file']
      upload_result = cloudinary.uploader.upload(file)
-     photo_url = upload_result ['url']
+     photo_url = upload_result ['secure_url']
      news = News(title = title,
                  body = body,
                  image_url = photo_url,
-                 poster_news = user_id)
+                 poster_news = 1)
 
      db.session.add(news)
      db.session.commit()
@@ -131,7 +140,7 @@ def update_news(news_id):
      upload_result = cloudinary.uploader.upload(file)
      title = request.form.get('title')
      body = request.form.get('body')
-     photo_url = upload_result ['url']
+     photo_url = upload_result ['secure_url']
      news = News.query.get(news_id)
      if news is None:
          raise APIException('News not found', status_code=404)
@@ -187,21 +196,20 @@ def update__artist(artist_id):
         if file is None:
            return {"error": "ha ocurrido un error"}, 400
         upload_result = cloudinary.uploader.upload(file)
-        photo_url = upload_result['url']
+        photo_url = upload_result['secure_url']
         name = request.form.get('name')
         description = request.form.get('description')
         music_url = request.form.get('music_url')
         artist = Artist.query.get(artist_id)
         if artist is None:
             raise APIException('Artist not found', status_code=404)
-        if "description" and "name" and "image_url" and "music_url" in request.form:
-            upload_result = cloudinary.uploader.upload(file)
+        if "description" and "name" and "file" and "music_url" in request.form:
             artist.description = description
             artist.name = name
             artist.image_url = photo_url
             artist.musicUrl = music_url
-        db.session.commit()
-        return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
+            db.session.commit()
+            return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
     return jsonify("user doesn't have permission"), 411
 
 
