@@ -64,7 +64,7 @@ class News(db.Model):
 
 
 class Artist(db.Model):
-    ArtistId = db.Column(db.Integer, primary_key=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(250), unique=False, nullable=False)
     image_url = db.Column(db.String(120), unique=False, nullable=False)
@@ -73,7 +73,7 @@ class Artist(db.Model):
         return f'<Artist {self.id}>'
     def serialize(self):
         return {
-            "ArtistId": self.ArtistId,
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "image_url": self.image_url,

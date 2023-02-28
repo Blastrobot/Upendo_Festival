@@ -56,7 +56,7 @@ def login():
         User.email == email, User.password == password, User.is_active == True).first()
     if user:
         access_token = create_access_token(identity=email)
-        return jsonify(access_token=access_token)
+        return jsonify(access_token=access_token, admin=user.is_admin)
 
     return jsonify({"msg": "Bad email or password"}), 40
 
@@ -83,6 +83,7 @@ def show_news():
                      }
     return jsonify(response_body), 200
 
+
 @api.route("/news/<int:id>", methods = ["GET"])
 def getNewsById(id):
     news = db.get_or_404(News, id)
@@ -90,6 +91,15 @@ def getNewsById(id):
     response_body = {"message": "ok",
                      "results": response
     }
+
+@api.route('/news/<int:news_id>', methods=['GET'])
+def show_news_byId(news_id):
+    news = News.query.filter(news_id)
+    response = [news.serialize() for news in news]
+    response_body = {"message": "ok",
+                     "results": response
+                     }
+
     return jsonify(response_body), 200
 
 
@@ -179,8 +189,9 @@ def getAllArtist():
 
 @api.route("/artist/<int:id>", methods = ["GET"])
 def getArtistById(id):
-    artist = db.get_or_404(Artist, id)
-    response = artist.serialize()
+    # artist = db.get_or_404(Artist, id)
+    artist = Artist.query.filter(id)
+    response = [artist.serialize() for artist in artists]
     response_body = {"message": "ok",
                      "results": response
     }

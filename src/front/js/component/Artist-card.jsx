@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import "../../styles/card.css";
+import { Context } from "../store/appContext";
 
 
 export const Artist_card = (props) => {
+
 
 
 
@@ -17,6 +20,7 @@ export const Artist_card = (props) => {
     const navigate = useNavigate();
 
     const handleclick = (artist_id) => {
+
         navigate(`/artist/${artist_id}`)
 
     };
@@ -26,15 +30,17 @@ export const Artist_card = (props) => {
 
     return (
 
-        <div id="artis-grid-card" className="card col-12 col-md-3 flex-row">
-            <img src={props.image} onError={handleOnErrorImg} className="card-img-top" />
-            <div className="card-body">
-                <h5 className="artist-name">{props.name}</h5>
-                <p className="card-text">
-                    {props.text}
-                </p>
-                <button className="direct-to-single-view" onClick={(e) => handleclick(props.artist_id)}> Go to </button>
+        <div className="cards d-flex flex-col align-items-center">
+
+            <img className="artist-image" src={props.image} onError={handleOnErrorImg} />
+
+            <div className="hidden-menú d-flex flex-col  ">
+
+
+                <button className="direct-to btn   btn btn-outline-dark " onClick={(e) => handleclick(props.artist_id)}> {props.name} </button>
+
             </div>
+
         </div>
     )
 
