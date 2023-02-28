@@ -7,7 +7,12 @@ import { Signup } from "./pages/signup";
 import { Admin } from "./pages/admin";
 import { Single } from "./pages/single";
 import { Tickets } from "./pages/tickets";
+import { Cancel } from "./pages/cancel";
+import { Success } from "./pages/success";
+import { Checkout } from "./pages/checkout";
+import { ProductDisplay } from "./pages/checkout"
 import injectContext from "./store/appContext";
+import { CartProvider } from "./store/cartContext";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -23,20 +28,25 @@ const Layout = () => {
 
   return (
     <div>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar/>
-          <Routes>
-            <Route element={<Home />} path="/" />
-            <Route element={<Signup />} path="/signup" />
-            <Route element={<Admin />} path="/admin" />
-            <Route element={<Tickets />} path="/tickets" />
-            <Route element={<Artist_grid />} path="/artist" />
-            <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
-            <Route element={<h1>Not found!</h1>} />
-          </Routes>
-        </ScrollToTop>
-      </BrowserRouter>
+      <CartProvider >
+        <BrowserRouter basename={basename}>
+          <ScrollToTop>
+            <Navbar/>
+            <Routes>
+              <Route element={<Home />} path="/" />
+              <Route element={<Signup />} path="/signup" />
+              <Route element={<Admin />} path="/admin" />
+              <Route element={<Tickets />} path="/tickets" />
+              <Route element={<Checkout />} path="/checkout" />
+              <Route element={<Success/>} path="/success" />
+              <Route element={<Cancel />} path="/cancelled" />
+              <Route element={<Artist_grid />} path="/artist" />
+              <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
+              <Route element={<h1>Not found!</h1>} />
+            </Routes>
+          </ScrollToTop>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 };
