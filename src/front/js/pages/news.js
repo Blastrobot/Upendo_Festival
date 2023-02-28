@@ -2,20 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
-import { Artist_card } from "../component/Artist-card.jsx";
-
-import { LineUp } from "../component/Line-Up.jsx";
+import { NewsCard } from "../component/News-Card.jsx";
 
 import { Spinner } from "../component/Spinner.jsx";
 
-import "../../styles/card.css";
+import { LineUp } from "../component/Line-Up.jsx";
+import { EveryNews } from "../component/All-news-card.jsx";
+import "../../styles/news.css";
 
-export const Artist_grid = () => {
+export const AllNews = () => {
   const { store, actions } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
 
-  const getArtists = async (url) => {
+  const getNews = async (url) => {
     setLoading(true);
     const headers = new Headers();
     headers.append("Access-Control-Allow-Origin", "*");
@@ -31,42 +31,40 @@ export const Artist_grid = () => {
 
       console.log(data);
 
-      actions.insertArtists(data);
+      actions.inserttNews(data);
 
       setLoading(false);
     }
   };
 
-  const artists = store.artists;
-  console.log(store.artists);
-  console.log(store.single_artist);
+  const news = store.news;
 
   useEffect(() => {
-    artists.length == 0
-      ? getArtists(process.env.BACKEND_URL + "/api/artist")
-      : null;
+    news.length == 0 ? getNews(process.env.BACKEND_URL + "/api/news") : null;
   }, []);
 
   return (
-    <>
+    <div>
       <div className="top-container d-flex flex-row justify-content-between align-items-end">
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
+        <LineUp text={"All news"} />
       </div>
-      <div className="container">
-        <div className="card-grid d-flex flex-row justify-content-center ">
+
+      <div className="All-News-container d-flex flex-row justify-content-center">
+        <div className="single-news d-flex flex-row">
           {loading ? (
             <Spinner />
           ) : (
-            artists.map((artist, index) => {
+            news.map((news, index) => {
               return (
                 <div key={index}>
-                  <Artist_card
-                    image={artist.image_url}
-                    name={artist.name}
-                    artist_id={index}
+                  <EveryNews
+                    image={news.image_url}
+                    title={news.title}
+                    body={news.body}
+                    id={news.id}
                   />
                 </div>
               );
@@ -74,6 +72,6 @@ export const Artist_grid = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };

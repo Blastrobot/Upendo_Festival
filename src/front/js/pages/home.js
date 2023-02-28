@@ -1,15 +1,19 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { NewsGrid } from "../component/Newsgrid.jsx";
+import { Video } from "../component/Video.jsx";
+import { Poster } from "../component/Poster.jsx";
 
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5">
-      {/* <Spotify link="https://open.spotify.com/album/0fUy6IdLHDpGNwavIlhEsl?si=mTiITmlHQpaGkoivGTv8Jw" /> */}
-      <h1>Esto es el home</h1>
+    <div>
+      <Poster />
+      <Video />
+      <NewsGrid />
     </div>
   );
 };

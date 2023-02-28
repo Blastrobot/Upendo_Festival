@@ -39,14 +39,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/login", options);
-          console.log(process.env.BACKEND_URL)
+            process.env.BACKEND_URL + "/api/login",
+            options
+          );
+          console.log(process.env.BACKEND_URL);
 
           if (resp.status === 200) {
             const data = await resp.json();
             localStorage.setItem("token", data.access_token);
             setStore({ token: data.access_token });
             setStore({ admin: data.admin })
+
             // adminValidation() evaluar si tengo que ejecutar todo lo necesario para el admin
             // el is_admin lo puedo traer dentro del json o dentro del token que tengo que averiguar
             return true;
@@ -145,7 +148,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           next_page: data.next,
         });
       },
-      insertNews: (data) => {
+      inserttNews: (data) => {
         setStore({
           news: getStore().news.concat(data.results),
           next_page: data.next,
