@@ -60,6 +60,7 @@ export const AdminPanel = () => {
   const handleClick = () => {
     navigate("/admin/news/create");
   };
+
   return (
     <div>
       <h1 className="text-center">ADMIN PANEL</h1>
@@ -70,32 +71,27 @@ export const AdminPanel = () => {
             <h3>News</h3>
             <button onClick={(e) => handleClick()}>+ Create new</button>
           </div>
-          <div className="row">
-            <div className="single-news d-flex flex-row">
-              {news.map((news, index) => {
-                return (
-                  <div key={index}>
-                    <NewsCardAdmin
-                      id={news.id}
-                      image={news.image_url}
-                      title={news.title}
-                      body={news.body}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+          <div className="row justify-content-center">
+            {news.map((news, index) => {
+              return (
+                <div key={index} className="col-md-8 col-xl-6 mb-4">
+                  <NewsCardAdmin
+                    id={news.id}
+                    image={news.image_url}
+                    title={news.title}
+                    body={news.body}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div>
           <h3>Artist</h3>
-          <div className="row">
+          <div className="row justify-content-center">
             {artists.map((artist, index) => {
               return (
-                <div
-                  key={index}
-                  className="container row row-cols-3 row-cols-md-2"
-                >
+                <div key={index} className="col-3 mx-3">
                   <Artist_card_admin
                     image={artist.image_url}
                     name={artist.name}
