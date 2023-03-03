@@ -2,17 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { CartContext } from "../store/cartContext";
+import CartProduct from "./cartProduct.jsx";
+import { Button, Offcanvas } from "react-bootstrap"
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const cart = useContext(CartContext);
+
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
 	const navigate = useNavigate();
+
 	const [admin, setadmin] = useState(false)
 
-	const checkout = async () => {
-		await fetch("https://3001-blastrobot-finalproject-8zt3fz6eteh.ws-eu88.gitpod.io/create-checkout-session", {
+	const checkoutHandle = async () => {
+		const response = await fetch(process.env.BACKEND_URL + "/create-checkout-session", {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
@@ -20,8 +29,10 @@ export const Navbar = () => {
 			body: JSON.stringify({ items: cart.items })
 		}).then((response) => {
 			return response.json();
-		}).then((session) => {
-			stripe.redirectToCheckout({ sessionId: session.id })
+		}).then((response) => {
+			if (response.url) {
+				window.location.assign(response.url)
+			}
 		})
 	}
 
@@ -74,7 +85,7 @@ export const Navbar = () => {
 									Login
 								</a>
 								<div className="dropdown-menu">
-									<form className="px-3 py-3">
+									<form className="px-3 py-3 m-3">
 										<div className="form-floating">
 											<input type="email" className="form-control" id="loginemail" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} value={email} />
 											<label htmlFor="loginemail" className="form-label">Email address</label>
@@ -85,9 +96,8 @@ export const Navbar = () => {
 										</div>
 										<hr className="dropdown-divider" />
 										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-3 mx-5">Login</button>
-										<div id="passwordHelp" className="form-text my-3 mx-1">¿Don't have an account?.</div>
-
-										<button type="submit" onClick={(e) => { handleSignup(e) }} className="btn btn-outline-dark mt-2 mx-5">Sign up</button>
+										<div id="passwordHelp" className="form-text my-3 mx-1">Don't have an account?</div>
+										<button type="submit" onClick={(e) => { handleSignup(e) }} className="btn btn-outline-dark px-2 mt-3 mx-5">Sign up</button>
 									</form>
 								</div>
 							</div>
@@ -118,60 +128,38 @@ export const Navbar = () => {
 
 								</div>
 							</div>
-							{/* <button className="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+							<Button variant="primary" onClick={handleShow}>
 								{productsCount} Items
-							</button>
-							<div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-								<div className="offcanvas-header">
-									<h5 className="offcanvas-title" id="offcanvasRightLabel">Shopping Cart</h5>
-									<button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-								</div>
-								<div className="offcanvas-body">
+							</Button>
+							<Offcanvas show={show} onHide={handleClose}>
+								<Offcanvas.Header closeButton>
+									<Offcanvas.Title>Shopping Cart</Offcanvas.Title>
+								</Offcanvas.Header>
+								<Offcanvas.Body>
 									{productsCount > 0 ?
 										<>
 											<p>Items in your cart:</p>
 											{cart.items.map((currentProduct, idx) => (
-												<h1 key={idx}>{currentProduct.id}</h1>
+												<CartProduct key={idx} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
 											))}
 
 											<h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
-											<button className="btn btn-success" onClick={checkout}>Purchase</button>
+											<Button variant="warning" onClick={checkoutHandle}>Purchase</Button>
+											{/* {sessionId && (
+												<StripeCheckout 
+													stripeKey="pk_test_51McCmaKTqfPHNZ5mOKOBJN5kQTJ5etXJqgzYFHtIXJMpmGoNO7KCT4EC4Lhpz1OZc4EM7ivJRiklDCPAXLnLNYrP00L6nePPLv"
+													token={(token) => console.log(token)}
+													amount={5}
+													currency="EUR"
+													shippingAddress
+													billingAddress/>
+											)} */}
 										</>
-										:
-										<h1>There are no items in your cart!</h1>
+									:
+									<h1>There are no items in your cart!</h1>
 									}
-									<div>Modal body</div>
-								</div>
-							</div> */}
-							<button className="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#Modal">
-								{productsCount} Items
-							</button>
-							<div className="modal fade" tabIndex="-1" id="Modal" aria-labelledby="ModalLabel" aria-hidden="true">
-								<div className="modal-dialog">
-									<div className="modal-content">
-										<div className="modal-header">
-											<h5 className="modal-title fs-5" id="Modal">Shopping Cart</h5>
-											<button type="button" className="btn-close" data-bs-dismiss="Modal" aria-label="Close"></button>
-										</div>
-									</div>
-								</div>
-								<div className="modal-body">
-									{productsCount > 0 ?
-										<>
-											<p>Items in your cart:</p>
-											{cart.items.map((currentProduct, idx) => (
-												<h1 key={idx}>Item ID: {currentProduct.id}</h1>
-											))}
-
-											<h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
-											<button className="btn btn-success" onClick={checkout}>Purchase</button>
-										</>
-										:
-										<h1>There are no items in your cart!</h1>
-									}
-									<div>Modal body</div>
-								</div>
-							</div>
+								</Offcanvas.Body>
+							</Offcanvas>
 							<div>
 								<button onClick={(evt) => { handleLogout(evt) }} className="btn text-light border border-info rounded">Logout</button>
 							</div>

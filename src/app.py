@@ -31,7 +31,7 @@ jwt = JWTManager(app)
 app.url_map.strict_slashes = False
 
 # DOMAIN
-MY_DOMAIN = "https://3000-blastrobot-finalproject-8zt3fz6eteh.ws-eu88.gitpod.io/"
+MY_DOMAIN = "https://3000-blastrobot-finalproject-3u9652mepy8.ws-eu89.gitpod.io/"
 
 # Cloudinary configuration
 cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), 
@@ -113,7 +113,7 @@ def create_payment():
 @app.route('/create-checkout-session', methods=['POST'])
 def checkout_session():
     try:
-        checkout_session = stripe.checkout.Session.create(
+        session = stripe.checkout.Session.create(
             line_items=[
                 {
                     'price': 'price_1McoRAKTqfPHNZ5mbSaUGU8Y',
@@ -128,7 +128,7 @@ def checkout_session():
         console.log(e)
         return str(e)
     
-    return redirect(checkout_session.url, code=303)
+    return jsonify({'url': session['url']})
     # return JSON.stringify({url: session.url})
 
 # this only runs if `$ python src/main.py` is executed
