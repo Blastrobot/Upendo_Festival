@@ -34,14 +34,14 @@
   align-items: center;
 }
 
-.single-news {
+/* .single-news {
   width: 1400px;
   height: 1200px;
   flex-wrap: wrap;
   gap: 4px 4px;
   padding-bottom: 400px;
   justify-content: center;
-}
+} */
 .news-btn {
   text-align: center;
   padding-left: 50px;

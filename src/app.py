@@ -88,23 +88,23 @@ def calculate_order_amount(items):
     return 2000;
 
 #Personalized Session
-@app.route('/create-payment-intent', methods=['POST'])
-def create_payment():
-    try:
-        data = json.loads(request.data)
-        # data = request.get_json()
-        intent = stripe.PaymentIntent.create(
-            amount = calculate_order_amount(data['items']),
-            currency = 'eur',
-            automatic_payment_methods = {
-                'enabled': True,
-            }
-        )
-        return jsonify({
-            'clientSecret': intent['client_secret']
-        })
-    except Exception as e:
-        return jsonify(error = str(e)), 403
+# @app.route('/create-payment-intent', methods=['POST'])
+# def create_payment():
+#     try:
+#         data = json.loads(request.data)
+#         # data = request.get_json()
+#         intent = stripe.PaymentIntent.create(
+#             amount = calculate_order_amount(data['items']),
+#             currency = 'eur',
+#             automatic_payment_methods = {
+#                 'enabled': True,
+#             }
+#         )
+#         return jsonify({
+#             'clientSecret': intent['client_secret']
+#         })
+#     except Exception as e:
+#         return jsonify(error = str(e)), 403
 
 #Checkout Session
 ## Volta price_1McoRAKTqfPHNZ5mbSaUGU8Y
