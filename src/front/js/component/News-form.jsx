@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/admin-form.css";
 
 export const AdminNewsForm = (props) => {
   const [title, setTitle] = useState("");
@@ -23,37 +24,35 @@ export const AdminNewsForm = (props) => {
   };
 
   const putNew = async (url) => {
-    var data = new FormData()
-    data.append("title", title)
-    data.append("body", body)
-    data.append("file", filee)
+    var data = new FormData();
+    data.append("title", title);
+    data.append("body", body);
+    data.append("file", filee);
     const request = {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${store.token}`,
         "Access-Cotrol-Allow-Origin": "*",
       },
-      body: data
+      body: data,
     };
     const response = await fetch(url, request);
-    console.log(response)
+    console.log(response);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    putNew(
-      process.env.BACKEND_URL + "/api/admin/news/" + news_ID
-    );
+    e.preventDefault();
+    putNew(process.env.BACKEND_URL + "/api/admin/news/" + news_ID);
     navigate("/admin");
   };
 
   return (
-    <form className="mx-4" onSubmit={(e) => handleSubmit(e)}>
+    <form className="mx-4 " onSubmit={(e) => handleSubmit(e)}>
       <div className="form-group">
         <label htmlFor="exampleFormControlInput1">Title</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control admin-form mb-3"
           id="exampleFormControlInput1"
           defautvalue={props.title}
           placeholder={props.title}
@@ -63,7 +62,7 @@ export const AdminNewsForm = (props) => {
       <div className="form-group">
         <label htmlFor="exampleFormControlTextarea1">Body</label>
         <textarea
-          className="form-control"
+          className="form-control admin-form mb-3"
           id="exampleFormControlTextarea1"
           rows="3"
           defautvalue={props.body}
@@ -75,10 +74,12 @@ export const AdminNewsForm = (props) => {
         <label htmlFor="exampleFormControlInput1">Select Image</label>
         <input
           type="file"
-          className="form-control"
+          className="form-control admin-form mb-3"
           onChange={handleFileChange}
         ></input>
-        <button type="submit">Submit</button>
+        <button className="mx-auto form-btn mb-5" type="submit">
+          Submit
+        </button>
       </div>
     </form>
   );

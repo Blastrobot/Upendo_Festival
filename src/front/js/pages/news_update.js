@@ -27,7 +27,7 @@ export const AdminNewsUpdatePanel = () => {
   return (
     <div className="mx-5">
       <Link to="/admin" style={{ textDecoration: "none" }}>
-        <h1 className="text-center text-dark">ADMIN PANEL</h1>
+        <h1 className="mx-auto text-dark">ADMIN PANEL</h1>
       </Link>
       <hr className="mx-4" />
       <AdminNewsForm
