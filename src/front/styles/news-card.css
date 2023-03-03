@@ -49,10 +49,14 @@
   justify-content: space-evenly;
   transform: translateY(-100%);
 }
-.news-btn {
+.news-admin-btn {
   text-align: center;
   padding-left: 5%;
   padding-right: 5%;
+}
+.news-btn {
+  text-align: center;
+  padding-left: 50px;
 }
 .more-news {
   margin-top: 20px;

@@ -55,7 +55,7 @@ export const NewsCardAdmin = (props) => {
           </button>
           <button
             type="button"
-            className="news-btn btn-dark"
+            className="news-admin-btn btn-dark"
             onClick={(e) => handleUpdate(props.id)}
           >
             Update
