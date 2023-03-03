@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import logo from "./../../img/logoFooter.png";
+import "../../styles/home.css";
 
 export const Footer = () => (
-  <footer className="footer container-fluid bg-dark text-white">
-    <div className="row d-flex justify-content-between">
+  <footer className="footer  py-40 container-fluid bg-dark text-white">
+    <div className="row  d-flex justify-content-between">
       <div className="logo col-6">
         <img src={logo} width="250vh"></img>
       </div>

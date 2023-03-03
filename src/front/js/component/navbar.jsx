@@ -9,7 +9,7 @@ export const Navbar = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
-
+	const [admin, setadmin] = useState(false)
 
 	const checkout = async () => {
 		await fetch("https://3001-blastrobot-finalproject-8zt3fz6eteh.ws-eu88.gitpod.io/create-checkout-session", {
@@ -31,7 +31,10 @@ export const Navbar = () => {
 		e.preventDefault();
 		actions.login(email, password).then(navigate("/"));
 	};
-
+	const handleSignup = (e) => {
+		e.preventDefault();
+		navigate("/signup")
+	}
 
 
 	const handleLogout = (evt) => {
@@ -41,10 +44,9 @@ export const Navbar = () => {
 		navigate("/");
 
 	}
-
-
-
-
+	useEffect(() => {
+		actions.adminValidation();
+	}, []);
 
 
 	return (
@@ -72,7 +74,7 @@ export const Navbar = () => {
 									Login
 								</a>
 								<div className="dropdown-menu">
-									<form className="px-4 py-3">
+									<form className="px-3 py-3">
 										<div className="form-floating">
 											<input type="email" className="form-control" id="loginemail" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} value={email} />
 											<label htmlFor="loginemail" className="form-label">Email address</label>
@@ -80,10 +82,12 @@ export const Navbar = () => {
 										<div className="form-floating">
 											<input type="password" className="form-control" id="loginpassword" placeholder="password" aria-describedby="emailHelp" onChange={(e) => setPassword(e.target.value)} value={password} />
 											<label htmlFor="loginpassword" className="form-label">Password</label>
-											<div id="passwordHelp" className="form-text my-3 mx-3">We'll never share your password or ask for it.</div>
 										</div>
 										<hr className="dropdown-divider" />
-										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-3 mx-5">Submit</button>
+										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-3 mx-5">Login</button>
+										<div id="passwordHelp" className="form-text my-3 mx-1">¿Don't have an account?.</div>
+
+										<button type="submit" onClick={(e) => { handleSignup(e) }} className="btn btn-outline-dark mt-2 mx-5">Sign up</button>
 									</form>
 								</div>
 							</div>
@@ -105,12 +109,13 @@ export const Navbar = () => {
 									<Link to="/" className="nav-link text-light" aria-current="page" href="#">Home</Link>
 									<Link to="/artist" className="nav-link text-light" href="#">Artists</Link>
 									<Link to="/news" className="nav-link text-light" href="#">News</Link>
+									<Link to="/tickets" className="nav-link text-light">Tickets</Link>
 									{store.admin == true ? (
-										<Link to="/admin" className="nav-link text-light">Admin</Link>)
+										<Link to="/admin" className="nav-link text-warning">Admin</Link>)
 										:
 										<></>
 									}
-									<Link to="/tickets" className="nav-link text-light">Tickets</Link>
+
 								</div>
 							</div>
 							{/* <button className="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
