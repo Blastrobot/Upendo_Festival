@@ -24,30 +24,27 @@ export const AdminArtistsForm = (props) => {
   };
 
   const putArtist = async (url) => {
-    var data = new FormData()
-    data.append("name", props.name)
-    data.append("description", desc)
-    data.append("music_url", music)
-    data.append("file", file)
+    var data = new FormData();
+    data.append("name", props.name);
+    data.append("description", desc);
+    data.append("music_url", music);
+    data.append("file", file);
     const request = {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${store.token}`,
         "Access-Cotrol-Allow-Origin": "*",
       },
-      body: data
+      body: data,
     };
     const response = await fetch(url, request);
-    console.log(response)
+    console.log(response);
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    putArtist(
-      process.env.BACKEND_URL + "/api/admin/artist/" + artist_ID
-    );
+    event.preventDefault();
+    putArtist(process.env.BACKEND_URL + "/api/admin/artist/" + artist_ID);
     navigate("/admin");
-
   };
 
   return (

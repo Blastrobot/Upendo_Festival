@@ -4,16 +4,16 @@ import { AdminNewsForm } from "../component/News-form.jsx";
 
 export const AdminNewsUpdatePanel = () => {
   const [neww, setNeww] = useState({});
-  const {news_ID} = useParams();
+  const { news_ID } = useParams();
 
   const getNew = async (url) => {
     const headers = new Headers();
     headers.append("Access-Control-Allow-Origin", "*");
     const request = {
       method: "GET",
-      headers: headers
+      headers: headers,
     };
-
+    console.log("ok");
     const response = await fetch(url, request);
     if (response.ok) {
       const data = await response.json();
@@ -22,10 +22,8 @@ export const AdminNewsUpdatePanel = () => {
   };
 
   useEffect(() => {
-    getNew(
-      process.env.BACKEND_URL + "/api/news/" + news_ID
-    );
-  }, [])
+    getNew(process.env.BACKEND_URL + "/api/news/" + news_ID);
+  }, []);
   return (
     <div className="mx-5">
       <Link to="/admin" style={{ textDecoration: "none" }}>

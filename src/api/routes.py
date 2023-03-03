@@ -87,6 +87,8 @@ def getNewsById(id):
     response_body = {"message": "ok",
                      "results": response
     }
+    return jsonify(response_body), 200
+
 
 
 
