@@ -50,9 +50,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             localStorage.setItem("admin", data.admin);
             setStore({ token: data.access_token });
             setStore({ admin: data.admin });
-
-            // adminValidation() evaluar si tengo que ejecutar todo lo necesario para el admin
-            // el is_admin lo puedo traer dentro del json o dentro del token que tengo que averiguar
             return true;
           } else {
             alert("An error ocurred");
@@ -157,30 +154,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           next_page: data.next,
         });
       },
-
-      getProductData: (id) => {
-        let productData = productsArray.find((product) => product.id === id);
-
-        if (productData == undefined) {
-          console.log("Product does not exist for specific ID:" + id);
-          return undefined;
-        }
-
-        return productData;
-      },
-
-      // getProductData: (id) => {
-      //   const store = getStore();
-
-      //   const productData = store.productsArray.find(product => product.id === id);
-
-      //   if (productData == undefined) {
-      //     console.log("Product does not exist for specific ID:" + id);
-      //     return undefined;
-      //   }
-
-      //   return productData;
-      // }
     },
   };
 };
