@@ -28,6 +28,8 @@ def get_tickets():
     return jsonify(response_body), 200
 
 
+
+
 @api.route('/user/tickets/<int:user_id>', methods=['GET'])
 @jwt_required()
 def get_user_tickets():
@@ -87,6 +89,8 @@ def getNewsById(id):
     response_body = {"message": "ok",
                      "results": response
     }
+    return jsonify(response_body), 200
+
 
 
 
