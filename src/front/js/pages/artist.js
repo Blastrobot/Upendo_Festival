@@ -49,11 +49,8 @@ export const Artist_grid = () => {
 
   return (
     <>
-      <div className="top-container d-flex flex-row justify-content-between align-items-end">
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
-        <LineUp text={"Line-Up"} />
+      <div className="top-container d-flex flex-row  justify-content-center py-5">
+        <h1> LINE UP </h1>
       </div>
       <div className="container">
         <div className="card-grid d-flex flex-row justify-content-center ">

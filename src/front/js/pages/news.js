@@ -2,11 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
-import { NewsCard } from "../component/News-Card.jsx";
-
 import { Spinner } from "../component/Spinner.jsx";
 
-import { LineUp } from "../component/Line-Up.jsx";
 import { EveryNews } from "../component/All-news-card.jsx";
 import "../../styles/news.css";
 
@@ -44,33 +41,28 @@ export const AllNews = () => {
   }, []);
 
   return (
-    <div>
-      <div className="top-container d-flex flex-row justify-content-between align-items-end">
-        <LineUp text={"All news"} />
-        <LineUp text={"All news"} />
-        <LineUp text={"All news"} />
-        <LineUp text={"All news"} />
+    <div className="container-fluid">
+      <div className="top-container d-flex flex-row  justify-content-center py-5">
+        <h1> NEWS </h1>
       </div>
 
-      <div className="all-News-container d-flex flex-row justify-content-center">
-        <div className="news-box d-flex flex-row ">
-          {loading ? (
-            <Spinner />
-          ) : (
-            news.map((news, index) => {
-              return (
-                <div key={index}>
-                  <EveryNews
-                    image={news.image_url}
-                    title={news.title}
-                    body={news.body}
-                    id={news.id}
-                  />
-                </div>
-              );
-            })
-          )}
-        </div>
+      <div className="all-News-container">
+        {loading ? (
+          <Spinner />
+        ) : (
+          news.map((news, index) => {
+            return (
+              <div key={index}>
+                <EveryNews
+                  image={news.image_url}
+                  title={news.title}
+                  body={news.body}
+                  id={news.id}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

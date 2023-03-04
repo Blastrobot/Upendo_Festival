@@ -45,6 +45,7 @@ const Layout = () => {
               <Route element={<Tickets />} path="/tickets" />
               <Route element={<Artist_grid />} path="/artist" />
               <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
+              <Route element={<AllNews />} path="/news" />
 
               <Route element={<AdminPanel />} path="/admin" />
               <Route
@@ -59,8 +60,6 @@ const Layout = () => {
                 element={<AdminNewsCreatePanel />}
                 path="/admin/news/create"
               />
-
-              <Route element={<AllNews />} path="/news" />
 
               <Route element={<h1>Not found!</h1>} />
             </Routes>

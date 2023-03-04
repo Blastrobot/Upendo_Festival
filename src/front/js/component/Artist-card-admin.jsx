@@ -18,13 +18,12 @@ export const Artist_card_admin = (props) => {
       <img
         src={props.image}
         onError={handleOnErrorImg}
-        className="card-img-top"
+        className="admin-artist-image"
       />
-      <div className="d-flex mb-5 justify-content-between mt-2">
+      <div className="mb-5 text-center mt-2">
         <h5 className="">{props.name}</h5>
-        <p className="card-text">{props.text}</p>
         <button
-          className="btn-dark"
+          className="btn-dark mx-auto"
           onClick={(e) => handleclick(props.artist_id)}
         >
           Update Artist

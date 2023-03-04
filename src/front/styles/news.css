@@ -1,7 +1,7 @@
 .single-news-img {
   object-fit: cover;
   padding-top: 9px;
-  width: 400px;
+  width: 500px;
   height: 400px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
@@ -14,8 +14,8 @@
   width: 400px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 30px;
-  padding-top: 50px;
+  margin-top: 80px;
+  padding-bottom: 180px;
 
   background: none;
   color: black;
@@ -24,7 +24,7 @@
 .singlenews-title {
   margin-bottom: 40px;
   margin-right: 5px;
-  padding-left: 10px;
+  padding-left: 100px;
 }
 .news-box {
   width: 1400px;
@@ -35,5 +35,11 @@
   justify-content: center;
 }
 .all-News-container {
-  height: 4500px;
+  height: 3500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 200px;
 }

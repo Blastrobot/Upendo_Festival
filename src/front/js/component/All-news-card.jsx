@@ -25,12 +25,14 @@ export const EveryNews = (props) => {
             <div className="card-single d-flex flex-row justify-content-center">
 
                 <img src={props.image} onError={handleOnErrorImg} className="single-news-img" />
-                <div className="news-body-container d-flex align-items-end">
+                <div className="news-body-container d-flex flex-col align-items-end">
+
                     <p className="singlenews-bdy">
                         {props.body}
                     </p>
 
                 </div>
+
             </div>
         </div>
     )
