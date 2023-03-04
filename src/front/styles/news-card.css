@@ -42,10 +42,26 @@
   padding-bottom: 400px;
   justify-content: center;
 } */
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transform: translateY(-100%);
+}
+
+.news-admin-btn {
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 .news-btn {
   text-align: center;
   padding-left: 50px;
 }
+
 .more-news {
   margin-top: 20px;
   padding-left: 60px;

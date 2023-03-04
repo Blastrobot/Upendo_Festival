@@ -123,6 +123,7 @@ def checkout_session():
     try:
         session = stripe.checkout.Session.create(
             line_items=line_items,
+
             mode='payment',
             success_url=MY_DOMAIN + '?success=true',
             cancel_url=MY_DOMAIN + '?canceled=true'

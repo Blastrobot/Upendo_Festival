@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/admin-form.css";
 
 export const AdminArtistsForm = (props) => {
   const [desc, setDesc] = useState("");
@@ -24,30 +25,27 @@ export const AdminArtistsForm = (props) => {
   };
 
   const putArtist = async (url) => {
-    var data = new FormData()
-    data.append("name", props.name)
-    data.append("description", desc)
-    data.append("music_url", music)
-    data.append("file", file)
+    var data = new FormData();
+    data.append("name", props.name);
+    data.append("description", desc);
+    data.append("music_url", music);
+    data.append("file", file);
     const request = {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${store.token}`,
         "Access-Cotrol-Allow-Origin": "*",
       },
-      body: data
+      body: data,
     };
     const response = await fetch(url, request);
-    console.log(response)
+    console.log(response);
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    putArtist(
-      process.env.BACKEND_URL + "/api/admin/artist/" + artist_ID
-    );
+    event.preventDefault();
+    putArtist(process.env.BACKEND_URL + "/api/admin/artist/" + artist_ID);
     navigate("/admin");
-
   };
 
   return (
@@ -56,7 +54,7 @@ export const AdminArtistsForm = (props) => {
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Description</label>
           <textarea
-            className="form-control"
+            className="form-control admin-form mb-3"
             id="exampleFormControlTextarea1"
             rows="3"
             defautvalue={props.desc}
@@ -68,7 +66,7 @@ export const AdminArtistsForm = (props) => {
           <label htmlFor="exampleFormControlInput1">Music URL</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control admin-form mb-3"
             id="exampleFormControlInput1"
             defautvalue={props.musicUrl}
             placeholder={props.musicUrl}
@@ -79,12 +77,14 @@ export const AdminArtistsForm = (props) => {
           <label htmlFor="exampleFormControlInput1">Select Image</label>
           <input
             type="file"
-            className="form-control"
+            className="form-control admin-form mb-3"
             id="exampleFormControlInput1"
             onChange={handleFileChange}
           ></input>
         </div>
-        <button type="submit">Submit</button>
+        <button className="mx-auto form-btn mb-5" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
