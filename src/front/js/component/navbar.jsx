@@ -42,26 +42,25 @@ export const Navbar = () => {
 		e.preventDefault();
 		actions.login(email, password).then(navigate("/"));
 	};
+
 	const handleSignup = (e) => {
 		e.preventDefault();
 		navigate("/signup")
 	}
 
-
 	const handleLogout = (evt) => {
 		evt.preventDefault();
-
 		actions.UserLogout();
 		navigate("/");
-
 	}
+
 	useEffect(() => {
 		actions.adminValidation();
 	}, []);
 
 
 	return (
-		<>
+		<div className="container-flex">
 			{!store.token ?
 				(
 					<nav className="navbar navbar-light bg-dark navbar-expand-lg bg-body-tertiary">
@@ -82,7 +81,7 @@ export const Navbar = () => {
 							</div>
 							<div className="nav-item dropdown">
 								<a className="nav-link text-light border border-info rounded" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Login
+									<strong>LOGIN</strong>
 								</a>
 								<div className="dropdown-menu">
 									<form className="px-3 py-3 m-3">
@@ -168,6 +167,6 @@ export const Navbar = () => {
 				)
 
 			}
-		</>
+		</div>
 	);
 };

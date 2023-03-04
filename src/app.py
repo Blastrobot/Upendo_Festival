@@ -88,23 +88,23 @@ def calculate_order_amount(items):
     return 2000;
 
 #Personalized Session
-@app.route('/create-payment-intent', methods=['POST'])
-def create_payment():
-    try:
-        data = json.loads(request.data)
-        # data = request.get_json()
-        intent = stripe.PaymentIntent.create(
-            amount = calculate_order_amount(data['items']),
-            currency = 'eur',
-            automatic_payment_methods = {
-                'enabled': True,
-            }
-        )
-        return jsonify({
-            'clientSecret': intent['client_secret']
-        })
-    except Exception as e:
-        return jsonify(error = str(e)), 403
+# @app.route('/create-payment-intent', methods=['POST'])
+# def create_payment():
+#     try:
+#         data = json.loads(request.data)
+#         # data = request.get_json()
+#         intent = stripe.PaymentIntent.create(
+#             amount = calculate_order_amount(data['items']),
+#             currency = 'eur',
+#             automatic_payment_methods = {
+#                 'enabled': True,
+#             }
+#         )
+#         return jsonify({
+#             'clientSecret': intent['client_secret']
+#         })
+#     except Exception as e:
+#         return jsonify(error = str(e)), 403
 
 #Checkout Session
 ## Volta price_1McoRAKTqfPHNZ5mbSaUGU8Y
@@ -112,14 +112,18 @@ def create_payment():
 ## Congo price_1MgSkLKTqfPHNZ5m3zYpYDcs
 @app.route('/create-checkout-session', methods=['POST'])
 def checkout_session():
+    items = request.json["items"]
+    line_items = []
+    for item in items:
+        line_items.append({
+            "price": item['id'],
+            "quantity": item['quantity']
+        })
+    
     try:
         session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    'price': 'price_1McoRAKTqfPHNZ5mbSaUGU8Y',
-                    'quantity': 1,
-                },
-            ],
+            line_items=line_items,
+
             mode='payment',
             success_url=MY_DOMAIN + '?success=true',
             cancel_url=MY_DOMAIN + '?canceled=true'

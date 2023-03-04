@@ -1,13 +1,23 @@
-import React from "react";
-import { Card, Button, Row, Col, Form} from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Card, Button, Row, Col, Form, Toast, ToastContainer} from "react-bootstrap";
 import { CartContext } from "../store/cartContext"
 import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const ProductCard = (props) => { // props.product is the product we are selling
     const product = props.product;
     const cart = useContext(CartContext);
     const productQuantity = cart.getProductQuantity(product.id);
     console.log(cart.items);
+
+    const { store, actions } = useContext(Context);
+
+    useEffect(() => {
+		actions.userValidation();
+	}, []);
+
+    const [show, setShow] = useState(true);
+    const toggleShow = () => setShow(!show);
 
     return (
         <Card>
@@ -26,7 +36,24 @@ export const ProductCard = (props) => { // props.product is the product we are s
                         <Button variant="danger" onClick={() => cart.deleteFromCart(product.id)} className="my-2">Remove from Cart</Button>
                     </>
                     :
+                    (
+                    store.token ?
                     <Button variant="primary" onClick={() => cart.addOneToCart(product.id)}>Add to Cart</Button>
+                    :
+                    (<>
+                    <Button variant="primary" onClick={toggleShow}>Add to Cart</Button>
+                        <ToastContainer position="middle-center">
+                            <Toast bg="warning" show={!show} onClose={toggleShow}>
+                                <Toast.Header>
+                                    <img/>
+                                    <strong className="me-auto">UPENDO</strong>
+                                </Toast.Header>
+                                <Toast.Body>Please, proceed to login to buy your tickets! 😎</Toast.Body>
+                            </Toast>
+                        </ToastContainer>
+                    </>)
+                    )
+
                 }
             </Card.Body>
         </Card>
