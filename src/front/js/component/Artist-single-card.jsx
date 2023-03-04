@@ -38,7 +38,6 @@ export const Artist_single_card = (props) => {
                 <a href={props.music} target="_blank">
                     <button className="direct-to-spotify"> Play </button>
                     <AiFillFastForward />
-
                 </a>
             </div>
         </div>

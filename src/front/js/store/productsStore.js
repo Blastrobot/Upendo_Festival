@@ -1,16 +1,16 @@
 const productsArray = [
     {
-      id: "1",
+      id: "price_1McoRAKTqfPHNZ5mbSaUGU8Y",
       title: "Volta Ticket",
-      price: 59.99
+      price: 69.99
     },
     {
-      id: "2",
+      id: "price_1McoRVKTqfPHNZ5mrh0KWhrF",
       title: "Nile Ticket",
-      price: 119.99
+      price: 139.99
     },
     {
-      id: "3",
+      id: "price_1MgSkLKTqfPHNZ5m3zYpYDcs",
       title: "Congo Ticket",
       price: 199.99
     },

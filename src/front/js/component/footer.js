@@ -9,12 +9,9 @@ export const Footer = () => (
         <img src={logo} width="250vh"></img>
       </div>
       <div className="rrss col-6 d-flex justify-content-end" width="50%">
-        <a className="bi bi-instagram h4 my-auto mx-2 text-white" href=""></a>
-        <a className="bi bi-twitter h4 my-auto mx-2  text-white" href=""></a>
-        <a
-          className="bi bi-facebook h4 my-auto ms-2 me-4  text-white"
-          href=""
-        ></a>
+        <a className="bi bi-instagram h4 my-auto mx-2 text-white" href="" style={{ textDecoration: "none" }}></a>
+        <a className="bi bi-twitter h4 my-auto mx-2  text-white" href="" style={{ textDecoration: "none" }}></a>
+        <a className="bi bi-facebook h4 my-auto ms-2 me-4  text-white" href="" style={{ textDecoration: "none" }}></a>
       </div>
     </div>
     <hr className="mt-0" />
@@ -55,7 +52,7 @@ export const Footer = () => (
       >
         Terms & conditions
       </a>
-      <p> - </p>
+      {/* <p> - </p> */}
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
@@ -63,7 +60,7 @@ export const Footer = () => (
       >
         Terms of use
       </a>
-      <p> - </p>
+      {/* <p> - </p> */}
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
@@ -71,7 +68,7 @@ export const Footer = () => (
       >
         Privacy policy
       </a>
-      <p> - </p>
+      {/* <p> - </p> */}
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
@@ -82,7 +79,7 @@ export const Footer = () => (
     </div>
     <div className="text-center pb-1">
       <p>
-        <i className="bi bi-c-circle"></i> All Rigths Reserved Upendo Festival
+        <i className="bi bi-c-circle"></i> All Rights Reserved <strong>UPENDO Festival</strong>
       </p>
     </div>
   </footer>
