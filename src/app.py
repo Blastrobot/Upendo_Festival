@@ -112,14 +112,17 @@ def calculate_order_amount(items):
 ## Congo price_1MgSkLKTqfPHNZ5m3zYpYDcs
 @app.route('/create-checkout-session', methods=['POST'])
 def checkout_session():
+    items = request.json["items"]
+    line_items = []
+    for item in items:
+        line_items.append({
+            "price": item['id'],
+            "quantity": item['quantity']
+        })
+    
     try:
         session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    'price': 'price_1McoRAKTqfPHNZ5mbSaUGU8Y',
-                    'quantity': 1,
-                },
-            ],
+            line_items=line_items,
             mode='payment',
             success_url=MY_DOMAIN + '?success=true',
             cancel_url=MY_DOMAIN + '?canceled=true'
