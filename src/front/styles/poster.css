@@ -1,18 +1,17 @@
 .poster-container {
   width: 100vw;
-  height: 1080px;
+  height: 820x;
   object-fit: cover;
   flex-wrap: wrap;
   background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 400px;
-  margin-top: 300px;
+  margin-bottom: 300px;
 }
 
 .poster {
-  width: 1420px;
+  width: 95vw;
   height: 1100x;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }

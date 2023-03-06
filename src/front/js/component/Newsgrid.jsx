@@ -52,37 +52,37 @@ export const NewsGrid = () => {
   }, []);
 
   return (
-    <div>
-
-      <div className="container-news d-flex flex-row justify-content-center">
 
 
-        <div className="single-news d-flex flex-row">
-          {loading ? (
-            <Spinner />
-          ) : (
-            news.slice(0, 4).map((news, index) => {
-              return (
-                <div key={index}>
-                  <NewsCard
-                    image={news.image_url}
-                    title={news.title}
-                    body={news.body}
-                    id={news.id}
-                  />
-                </div>
-              );
-            })
-          )}
-          <div>
-            <button className="more-news" onClick={handleClick}>
-              <LineUp text={"More News"} />
-            </button>
-          </div>
+    <div className="container-news d-flex justify-content-center">
+
+
+      <div className="single-news d-flex flex-row">
+        {loading ? (
+          <Spinner />
+        ) : (
+          news.slice(0, 4).map((news, index) => {
+            return (
+              <div key={index}>
+                <NewsCard
+                  image={news.image_url}
+                  title={news.title}
+                  body={news.body}
+                  id={news.id}
+                />
+              </div>
+            );
+          })
+        )}
+        <div>
+          <button className="more-news" onClick={handleClick}>
+            <LineUp text={"More News"} />
+          </button>
         </div>
-
       </div>
 
     </div>
+
+
   );
 };

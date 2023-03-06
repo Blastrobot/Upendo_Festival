@@ -63,13 +63,13 @@ export const AdminPanel = () => {
 
   return (
     <div>
-      <h1 className="text-center">ADMIN PANEL</h1>
+      <h1 className="text-center pe-5">ADMIN PANEL</h1>
       <hr className="mx-5" />
       <div>
         <div>
           <div className="d-flex">
-            <h3>News</h3>
             <button onClick={(e) => handleClick()}>+ Create new</button>
+            <h3 className="d-flex mx-auto  pe-2 mb-5 my-3 ">News</h3>
           </div>
           <div className="row justify-content-center">
             {news.map((news, index) => {
@@ -87,7 +87,7 @@ export const AdminPanel = () => {
           </div>
         </div>
         <div>
-          <h3>Artist</h3>
+          <h3 className="d-flex mx-auto justify-content-center mb-5">Artist</h3>
           <div className="row justify-content-center">
             {artists.map((artist, index) => {
               return (
