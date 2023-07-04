@@ -49,11 +49,11 @@ export const Artist_grid = () => {
 
   return (
     <>
-      <div className="top-container d-flex flex-row  justify-content-center py-5">
+      <div className="second-title top-container d-flex flex-row  justify-content-center">
         <h1> LINE UP </h1>
       </div>
       <div className="container">
-        <div className="card-grid d-flex flex-row justify-content-center ">
+        <div className="card-grid d-flex flex-row justify-content-center">
           {loading ? (
             <Spinner />
           ) : (

@@ -52,15 +52,6 @@ export const Footer = () => (
       >
         Terms & conditions
       </a>
-      {/* <p> - </p> */}
-      {/* <a
-        className="mx-2 text-white border-0"
-        style={{ textDecoration: "none" }}
-        href=""
-      >
-        Terms of use
-      </a> */}
-      {/* <p> - </p> */}
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}
@@ -68,7 +59,6 @@ export const Footer = () => (
       >
         Privacy policy
       </a>
-      {/* <p> - </p> */}
       <a
         className="mx-2 text-white border-0"
         style={{ textDecoration: "none" }}

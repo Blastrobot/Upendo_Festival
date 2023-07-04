@@ -38,21 +38,19 @@
   font-size: 25px;
 }
 .card-grid {
-  width: 1400px;
+  /* width: 1400px;
   height: 2000;
   flex-wrap: wrap;
-  gap: 4px 4px;
   justify-content: center;
   align-self: center;
-  padding-right: 100px;
+  padding-right: 100px; */
+  gap: 4px 4px;
+  flex-wrap: wrap;
 }
-.top-container {
+/* .top-container {
   padding-left: 50px;
   margin-bottom: 100px;
-}
+} */
 .direct-to {
   size: 80%;
-}
-h1 {
-  padding-right: 100px;
 }

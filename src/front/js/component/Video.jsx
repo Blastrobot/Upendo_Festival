@@ -30,7 +30,6 @@ export const Video = () => {
                 loop
                 controls
                 muted
-
                 alt="All the devices"
                 src="https://res.cloudinary.com/dnqtyejtc/video/upload/v1677177263/VIDEO_HOME_kcjdly.mov"
                 ref={videoEl}

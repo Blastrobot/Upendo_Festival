@@ -42,28 +42,27 @@ export const AllNews = () => {
 
   return (
     <div className="container-fluid">
-      <div className="top-container d-flex flex-row justify-content-center py-5">
-        <h1> NEWS </h1>
+      <div className="second-title justify-content-center">
+        <h1>NEWS</h1>
       </div>
-
-      <div className="all-News-container">
+      {/* <div className="row"> */}
         {loading ? (
           <Spinner />
         ) : (
           news.map((news, index) => {
             return (
-              <div key={index}>
+              // <div key={index}>
                 <EveryNews
                   image={news.image_url}
                   title={news.title}
                   body={news.body}
                   id={news.id}
                 />
-              </div>
+              // </div>
             );
           })
         )}
       </div>
-    </div>
+    // </div>
   );
 };
