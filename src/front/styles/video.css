@@ -3,11 +3,11 @@
   height: 820x;
   object-fit: cover;
   flex-wrap: wrap;
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 400px;
+  margin-bottom: 300px;
 }
 
 .video {

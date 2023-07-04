@@ -93,10 +93,10 @@ export const Navbar = () => {
 											<input type="password" className="form-control" id="loginpassword" placeholder="password" aria-describedby="emailHelp" onChange={(e) => setPassword(e.target.value)} value={password} />
 											<label htmlFor="loginpassword" className="form-label">Password</label>
 										</div>
-										<hr className="dropdown-divider" />
-										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-3 mx-5">Login</button>
+										<hr className="dropdown-divider mt-3" />
+										<button type="submit" onClick={(e) => { handleSubmit(e) }} className="btn btn-outline-dark mt-2 mx-5">Login</button>
 										<div id="passwordHelp" className="form-text my-3 mx-1">Don't have an account?</div>
-										<button type="submit" onClick={(e) => { handleSignup(e) }} className="btn btn-outline-dark px-2 mt-3 mx-5">Sign up</button>
+										<button type="submit" onClick={(e) => { handleSignup(e) }} className="btn btn-outline-dark px-2 mt-1 mx-5">Register</button>
 									</form>
 								</div>
 							</div>

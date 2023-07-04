@@ -17,7 +17,7 @@ button {
   background-color: rgba(240, 248, 255, 0);
   border: none;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
 }
 .cards-body {
@@ -36,10 +36,4 @@ button {
 .play-button {
   margin-right: 20px;
 }
-a {
-  margin-right: 30px;
-  color: black;
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-}
+

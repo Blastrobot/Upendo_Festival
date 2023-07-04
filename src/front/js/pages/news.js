@@ -42,7 +42,7 @@ export const AllNews = () => {
 
   return (
     <div className="container-fluid">
-      <div className="top-container d-flex flex-row  justify-content-center py-5">
+      <div className="top-container d-flex flex-row justify-content-center py-5">
         <h1> NEWS </h1>
       </div>
 

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { NewsGrid } from "../component/Newsgrid.jsx";
@@ -12,19 +13,19 @@ export const Home = () => {
 
   return (
     <div>
-      <h1 className="main-title">
-        Enjoy the best Afro Pop festival in the paradise 🏝
-      </h1>
+      <Link to="/tickets" style={{textDecoration: "none"}}>
+        <h1 className="main-title">
+          BUY TICKETS HERE!
+        </h1>
+      </Link>
       <Poster />
       <Video />
       <NewsGrid />
-      <Container className="spotify ">
-        <div>
+      <Container className="spotify container-fluid">
+        
           <h1 className="spoty-title">Upendo Music Playlist</h1>
-        </div>
-        <div>
           <Spotify link="https://open.spotify.com/playlist/4uNZ30aesoQ2CJJnIQdwWB"></Spotify>
-        </div>
+        
       </Container>
     </div>
   );

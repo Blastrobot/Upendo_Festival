@@ -29,7 +29,7 @@ export const Tickets = () => {
 
     return (
         <div className="container text-center mt-5">
-            <h1>Tickets View</h1>
+            {/* <h1>Tickets View</h1> */}
             <div className="row">
                 {productsArray.map((product, idx) => (
                     <div className="col-12" key={idx}>

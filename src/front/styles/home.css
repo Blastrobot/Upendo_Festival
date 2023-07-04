@@ -1,18 +1,56 @@
-.footer {
-  margin-top: 100px;
-}
 .spotify {
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.spoty-title {
+/* .spoty-title {
   padding-left: 90px;
   margin-bottom: 30px;
-}
+} */
 .main-title {
   text-align: center;
   margin-top: 100px;
   margin-bottom: 100px;
+  font-size: 100px;
+  /* text-shadow: 0px 0px 5px #d39393, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3, 0px 0px 20px #b393d3; */
+  color: transparent;
+  background-image: radial-gradient(circle, #ffdd12, #00dfff, #00ffab, #e7eff6, #fb73cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 150%;
+  background-position: -150%;
+  animation: animated-gradient 4s infinite alternate-reverse, tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1s alternate both;
+}
+@keyframes animated-gradient {
+  to{
+    background-position: 100%;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.main-title:hover {
+  text-decoration: none;
+  color: transparent;
+  text-shadow: 0px 0px 35px #e7eff6;
+}
+body {
+  background-color: #3b444b;
+  overflow-x: hidden;
+}
+h1 {
+  color: white;
+}
+.navbar a {
+  margin-right: 30px;
 }
