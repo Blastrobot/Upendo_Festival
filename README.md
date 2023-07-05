@@ -97,3 +97,7 @@ To update with all yours tables you can edit the file app.py and go to the line 
 ## Publish your website!
 
 This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+
+## Demo
+
+https://im5.ezgif.com/tmp/ezgif-5-16a9a6e2cb.gif
