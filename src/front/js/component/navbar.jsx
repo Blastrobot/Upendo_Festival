@@ -134,15 +134,16 @@ export const Navbar = () => {
 								<Offcanvas.Header closeButton>
 									<Offcanvas.Title>Shopping Cart</Offcanvas.Title>
 								</Offcanvas.Header>
+								{/* <hr></hr> */}
 								<Offcanvas.Body>
 									{productsCount > 0 ?
 										<>
+											<hr></hr>
 											<p>Items in your cart:</p>
 											{cart.items.map((currentProduct, idx) => (
 												<CartProduct key={idx} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
 											))}
-
-											<h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+											<h1 className="text-dark">Total: {cart.getTotalCost().toFixed(2)} €</h1>
 											<Button variant="warning" onClick={checkoutHandle}>Purchase</Button>
 											{/* {sessionId && (
 												<StripeCheckout 

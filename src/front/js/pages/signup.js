@@ -47,8 +47,8 @@ export const Signup = () => {
         <div className=" row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div className="card bg-dark text-white">
-              <div className="body p-5 text-center">
-                <div className="mb-md-5 mt-md-4 pb-5">
+              <div className="body text-center">
+                <div className="m-1">
                   <img
                     className="logo text-center"
                     src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png"
@@ -62,7 +62,7 @@ export const Signup = () => {
                       contain 1 uppercase and 1 lowercase.)
                     </span>
                   </p>
-                  <div className="form-outline form-white mb-4">
+                  <div className="form-outline form-white mb-4 mx-5">
                     <input
                       type="email"
                       id="typeEmailX"
@@ -79,7 +79,7 @@ export const Signup = () => {
                     ) : null}
                     <label className="form-label">Email</label>
                   </div>
-                  <div className="form-outline form-white mb-4">
+                  <div className="form-outline form-white mb-4 mx-5">
                     <input
                       type="password"
                       id="typePasswordX"

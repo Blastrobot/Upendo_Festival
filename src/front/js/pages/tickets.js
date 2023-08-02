@@ -32,7 +32,7 @@ export const Tickets = () => {
             <h1 className="">TICKETS</h1>
             <div className="row">
                 {productsArray.map((product, idx) => (
-                    <div className="col-12" key={idx}>
+                    <div className="col-xxl-9 mx-auto" key={idx}>
                         <ProductCard product={product}/>
                     </div>
                 ))}

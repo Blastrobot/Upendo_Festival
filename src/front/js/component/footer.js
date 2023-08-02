@@ -15,7 +15,7 @@ export const Footer = () => (
       </div>
     </div>
     <hr className="" />
-    <div className="row d-flex justify-content-between">
+    <div className="d-flex justify-content-between">
       <div className="newsletter col-6 text-center">
         <h5 className="mb-4">SUBSCRIBE TO OUR NEWSLETTER</h5>
         <div className="input-group mx-auto" style={{ width: "75%" }}>
@@ -37,13 +37,13 @@ export const Footer = () => (
       <div className="contact col-6 text-center">
         <h5 className="mb-4">CONTACT US</h5>
         <div className="row d-flex justify-content-around">
-          <span className="col-sm bi bi-envelope text-white"><p>contact@upendofest.com</p></span>
+          <span className="col-sm bi bi-envelope"><p>contact@upendofest.com</p></span>
           <span className="col-sm bi bi-telephone"><p>691383648</p></span>
           <span className="col-sm bi bi-geo-alt"><p>Calle Edison 3, 28006, Madrid</p></span>
         </div>
       </div>
     </div>
-    <hr className="" />
+    <hr className=""/>
     <div className="text-center d-flex justify-content-center">
       <a
         className="mx-2 text-white border-0"

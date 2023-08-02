@@ -31,11 +31,8 @@ export const NewsGrid = () => {
     console.log(response);
     if (response.ok) {
       const data = await response.json();
-
       console.log(data);
-
       actions.inserttNews(data);
-
       setLoading(false);
     }
   };
@@ -44,7 +41,6 @@ export const NewsGrid = () => {
     navigate("/news")
   }
 
-
   const news = store.news;
 
   useEffect(() => {
@@ -52,18 +48,13 @@ export const NewsGrid = () => {
   }, []);
 
   return (
-
-
-    <div className="container-news d-flex justify-content-center">
-
-
-      <div className="single-news d-flex flex-row">
+    <div className="news-container mx-auto row row-cols-1 row-cols-md-2 g-4">
         {loading ? (
           <Spinner />
         ) : (
           news.slice(0, 4).map((news, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="col-sm d-flex">
                 <NewsCard
                   image={news.image_url}
                   title={news.title}
@@ -76,13 +67,9 @@ export const NewsGrid = () => {
         )}
         <div>
           <button className="more-news" onClick={handleClick}>
-            <LineUp text={"More News"} />
+            <LineUp text={"More news"} />
           </button>
         </div>
       </div>
-
-    </div>
-
-
   );
 };

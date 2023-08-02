@@ -1,13 +1,43 @@
 .spotify {
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* .spoty-title {
-  padding-left: 90px;
-  margin-bottom: 30px;
-} */
+.spoty-title {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  /* text-shadow: 0px 0px 5px #d39393, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3, 0px 0px 20px #b393d3; */
+  color: transparent;
+  background-image: radial-gradient(circle, #ffdd12, #e7eff6, #00dfff, #e7eff6, #00ffab, #e7eff6, #fb73cc, #ffdd12);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 200%;
+  background-position: -200%;
+  animation: animated-gradient 3s infinite alternate-reverse, tracking-in-expand 2.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.5s alternate both;
+}
+@keyframes animated-gradient {
+  to{
+    background-position: 50%;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .main-title {
   text-align: center;
   margin-top: 100px;
@@ -44,13 +74,18 @@
   color: transparent;
   text-shadow: 0px 0px 35px #e7eff6;
 }
-body {
-  background-color: #3b444b;
+body, #app{
+  background: rgb(39,39,41);
+  background: linear-gradient(120deg, rgba(39,39,41,1) 16%, rgba(58,58,102,1) 48%, rgba(27,105,120,1) 100%);
   overflow-x: hidden;
 }
 h1 {
   color: white;
 }
+/* .total-price{
+  color: dark
+} */
 .navbar a {
   margin-right: 30px;
 }
+ 

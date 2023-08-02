@@ -51,14 +51,14 @@ export const AllNews = () => {
         ) : (
           news.map((news, index) => {
             return (
-              // <div key={index}>
+              <div key={index}>
                 <EveryNews
                   image={news.image_url}
                   title={news.title}
                   body={news.body}
                   id={news.id}
                 />
-              // </div>
+              </div>
             );
           })
         )}

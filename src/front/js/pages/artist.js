@@ -49,7 +49,7 @@ export const Artist_grid = () => {
 
   return (
     <>
-      <div className="second-title top-container d-flex flex-row  justify-content-center">
+      <div className="second-title d-flex flex-row justify-content-center">
         <h1> LINE UP </h1>
       </div>
       <div className="container">
