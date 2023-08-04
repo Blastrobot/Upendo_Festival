@@ -12,11 +12,11 @@
   text-align: center;
   font-size: 50px;
   font-weight: bold;
-  /* text-shadow: 0px 0px 5px #d39393, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3, 0px 0px 20px #b393d3; */
-  color: transparent;
-  background-image: radial-gradient(circle, #ffdd12, #e7eff6, #00dfff, #e7eff6, #00ffab, #e7eff6, #fb73cc, #ffdd12);
-  -webkit-background-clip: text;
-  background-clip: text;
+  text-shadow: 0px 0px 5px #d39393, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3, 0px 0px 20px #b393d3;
+  /* color: transparent; */
+  /* background-image: radial-gradient(circle, #ffdd12, #e7eff6, #00dfff, #e7eff6, #00ffab, #e7eff6, #fb73cc, #ffdd12); */
+  /* -webkit-background-clip: text; */
+  /* background-clip: text; */
   background-size: 200%;
   background-position: -200%;
   animation: animated-gradient 3s infinite alternate-reverse, tracking-in-expand 2.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.5s alternate both;

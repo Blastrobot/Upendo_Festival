@@ -1,12 +1,17 @@
 import React, { useContext, useState } from "react";
-import { AiFillFastForward } from "react-icons/ai"
-
+import { useNavigate } from "react-router-dom";
 
 export const LineUp = (props) => {
+
+    const navigate = useNavigate();
+    const handleClick = (evt) => {
+        evt.preventDefault();
+        navigate("/news");
+    };
+
     return (
-        <div className="line-up d-flex flex-row align-items-end justify-content-between">
-            <h2>{props.text}</h2>
-            <AiFillFastForward />
+        <div className="container d-flex justify-content-center">
+            <button onClick={handleClick}><h3>{props.text}</h3></button>
         </div>
     )
-}
+};

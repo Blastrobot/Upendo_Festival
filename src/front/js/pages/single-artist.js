@@ -6,6 +6,8 @@ import "../../styles/single-card.css";
 import { useNavigate, Navigate } from "react-router-dom";
 import { LineUp } from "../component/Line-Up.jsx";
 
+// Artist single view
+
 export const ArtistSingleView = () => {
   const { store, actions } = useContext(Context);
   const [newArtist, setNewartist] = useState({});
@@ -33,26 +35,21 @@ export const ArtistSingleView = () => {
   return !newArtist ? (
     <Navigate to="/artist" />
   ) : (
-    <div className="main">
-      <div className="Back-container d-flex flex-row">
-        <button onClick={handleClick}>
-          <LineUp text={"Back to grid"} />
-        </button>
-      </div>
-      <div className="d-flex flex-row justify-content-center">
+    <div className="container my-5">
+      {/* <div className="d-flex flex-row justify-content-center"> */}
         {loading ? (
           <Spinner />
         ) : (
-          <div className="container-single d-flex flex-col ">
+          // <div className="container-single d-flex flex-col ">
             <Artist_single_card
               image={newArtist.image_url}
               name={newArtist.name}
               text={newArtist.description}
               music={newArtist.music_url}
             />
-          </div>
+          // </div>
         )}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

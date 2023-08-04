@@ -1,15 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import { Context } from "../store/appContext";
-
-import { NewsCard } from "./News-Card.jsx";
-
-import { Spinner } from "./Spinner.jsx";
-
-
-import "../../styles/news-card.css";
-import { LineUp } from "./Line-Up.jsx";
 import { useNavigate } from "react-router-dom";
+import { NewsCard } from "./News-Card.jsx";
+import { Spinner } from "./Spinner.jsx";
+import { LineUp } from "./Line-Up.jsx";
+import "../../styles/news-card.css";
 
 export const NewsGrid = () => {
   const { store, actions } = useContext(Context);
@@ -36,10 +31,10 @@ export const NewsGrid = () => {
       setLoading(false);
     }
   };
-  const handleClick = (evt) => {
-    evt.preventDefault();
-    navigate("/news")
-  }
+  // const handleClick = (evt) => {
+  //   evt.preventDefault();
+  //   navigate("/news")
+  // }
 
   const news = store.news;
 
@@ -48,7 +43,7 @@ export const NewsGrid = () => {
   }, []);
 
   return (
-    <div className="news-container mx-auto row row-cols-1 row-cols-md-2 g-4">
+    <div className="news-container mx-auto row row-cols-1 row-cols-md-2 g-3">
         {loading ? (
           <Spinner />
         ) : (
@@ -64,12 +59,8 @@ export const NewsGrid = () => {
               </div>
             );
           })
-        )}
-        <div>
-          <button className="more-news" onClick={handleClick}>
-            <LineUp text={"More news"} />
-          </button>
-        </div>
-      </div>
+        )};
+          <LineUp text={"To news"} />
+    </div>
   );
 };

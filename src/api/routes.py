@@ -214,3 +214,16 @@ def update__artist(artist_id):
             return jsonify({"msg": "artist modified", "artist": artist.serialize()},200), 200
     return jsonify("user doesn't have permission"), 411
 
+
+@api.route('/spotify-track')
+def get_spotify_track():
+    track_id = request.args.get('trackId')
+
+    track_info = {
+        'name': 'Track Name',
+        'artist': ['Artist 1'],
+        'album': 'Album Name',
+        'spotifyUrl': f'https://open.spotify.com/track/{track_id}'
+    }
+    
+    return jsonify(track_info)

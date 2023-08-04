@@ -41,7 +41,7 @@ export const AllNews = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="second-title justify-content-center">
         <h1>NEWS</h1>
       </div>

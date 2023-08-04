@@ -1,14 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import { Context } from "../store/appContext";
-
 import { Artist_card } from "../component/Artist-card.jsx";
-
 import { LineUp } from "../component/Line-Up.jsx";
-
 import { Spinner } from "../component/Spinner.jsx";
-
 import "../../styles/card.css";
+
+// General artists view
 
 export const Artist_grid = () => {
   const { store, actions } = useContext(Context);
@@ -49,11 +46,11 @@ export const Artist_grid = () => {
 
   return (
     <>
-      <div className="second-title d-flex flex-row justify-content-center">
-        <h1> LINE UP </h1>
-      </div>
       <div className="container">
-        <div className="card-grid d-flex flex-row justify-content-center">
+        <div className="second-title">
+          <h1> LINE UP </h1>
+        </div>
+        <div className="card-grid d-flex justify-content-center">
           {loading ? (
             <Spinner />
           ) : (
