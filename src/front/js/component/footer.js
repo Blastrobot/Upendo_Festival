@@ -3,7 +3,7 @@ import logo from "./../../img/logoFooter.png";
 import "../../styles/home.css";
 
 export const Footer = () => (
-  <footer className="footer mt-5 container-fluid bg-dark text-white">
+  <footer className="footer mt-5 container-fluid bg-dark bg-opacity-50 text-white">
     <div className="row  d-flex justify-content-between">
       <div className="logo col-6">
         <img src={logo} width="250vh"></img>

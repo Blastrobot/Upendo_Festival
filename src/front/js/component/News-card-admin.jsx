@@ -33,35 +33,27 @@ export const NewsCardAdmin = (props) => {
   };
 
   return (
-    <div>
-      <picture className="picture text-center">
-        <source media="(min-width: 0px)" srcSet={props.image} />
+    <div className="card news-card-admin">
+
         <img
           src={props.image}
           onError={handleOnErrorImg}
-          className="news-image"
+          style={{objectFit:"cover", height:"100%"}}
         />
-        <div className="news-body">
-          <h1 className="news-title">{props.title}</h1>
-          <p>{props.body}</p>
+        <div className="card-img-overlay bg-dark bg-opacity-50 d-flex flex-column align-items-center justify-content-center">
+          <h5 className="card-title text-light text-center">{props.title}</h5>
+          <div className="d-flex">
+            <button type="button" className="text-light card-text" onClick={(e) => handleDelete(props.id)}>
+              Delete
+            </button>
+            <button type="button" className="text-light card-text" onClick={(e) => handleUpdate(props.id)}>
+              Update
+            </button>
+
+          </div>
+
         </div>
-        <div className="d-flex btn-container">
-          <button
-            type="button"
-            className="news-btn btn-dark"
-            onClick={(e) => handleDelete(props.id)}
-          >
-            Delete
-          </button>
-          <button
-            type="button"
-            className="news-admin-btn btn-dark"
-            onClick={(e) => handleUpdate(props.id)}
-          >
-            Update
-          </button>
-        </div>
-      </picture>
+
     </div>
   );
 };

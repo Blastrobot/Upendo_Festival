@@ -4,7 +4,6 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { Signup } from "./pages/signup";
-import { Admin } from "./pages/admin";
 import { Single } from "./pages/single";
 import { Tickets } from "./pages/tickets";
 import { Cancel } from "./pages/cancel";

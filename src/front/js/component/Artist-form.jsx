@@ -50,6 +50,9 @@ export const AdminArtistsForm = (props) => {
 
   return (
     <div className="mx-5">
+      <div className="title">
+        <h5>{props.name}</h5>
+      </div>
       <form className="mx-4" onSubmit={(e) => handleSubmit(e)}>
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Description</label>

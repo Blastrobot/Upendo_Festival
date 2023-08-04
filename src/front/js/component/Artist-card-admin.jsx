@@ -14,20 +14,26 @@ export const Artist_card_admin = (props) => {
   };
 
   return (
-    <div className="">
+    <div className="card h-100">
       <img
         src={props.image}
         onError={handleOnErrorImg}
-        className="admin-artist-image"
+        className="card-img"
       />
-      <div className="mb-5 text-center mt-2">
-        <h5 className="">{props.name}</h5>
+      <div className="card-img-overlay bg-dark bg-opacity-50 d-flex flex-column align-items-center justify-content-center">
+
+      
+      {/* <div className="card-body"> */}
+
+        <h5 className="text-light card-title">{props.name}</h5>
         <button
-          className="btn-dark mx-auto"
+          className="text-light card-text"
           onClick={(e) => handleclick(props.artist_id)}
         >
-          Update Artist
+          Update
         </button>
+      {/* </div> */}
+      
       </div>
     </div>
   );

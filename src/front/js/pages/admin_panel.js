@@ -62,19 +62,21 @@ export const AdminPanel = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-center pe-5">ADMIN PANEL</h1>
-      <hr className="mx-5" />
-      <div>
-        <div>
-          <div className="d-flex">
-            <button onClick={(e) => handleClick()}>+ Create new</button>
-            <h3 className="d-flex mx-auto  pe-2 mb-5 my-3 ">News</h3>
+    <div className="container">
+      <div className="second-title">
+        <h1 className="text-center">ADMIN PANEL</h1>
+      </div>
+      <hr className="mx-5 text-light" />
+      {/* <div> */}
+        <div className="row row-cols-1 bg-transparent bg-gradient bg-light justify-content-center rounded-3 shadow-lg p-5">
+          <div className="d-flex flex-column align-items-center">
+            <h3 className="mx-auto text-light ">News</h3>
+            <button className="btn w-20 btn-success mt-3" onClick={(e) => handleClick()}>Create new +</button>
           </div>
-          <div className="row justify-content-center">
+          <div className="mx-auto row row-cols-1 row-cols-md-2 g-3">
             {news.map((news, index) => {
               return (
-                <div key={index} className="col-md-8 col-xl-6 mb-4">
+                <div key={index} className="col-sm d-flex">
                   <NewsCardAdmin
                     id={news.id}
                     image={news.image_url}
@@ -86,12 +88,15 @@ export const AdminPanel = () => {
             })}
           </div>
         </div>
-        <div>
-          <h3 className="d-flex mx-auto justify-content-center mb-5">Artist</h3>
-          <div className="row justify-content-center">
+
+
+
+        <div className="row row-cols-1 bg-transparent bg-gradient bg-light justify-content-center rounded-3 shadow-lg p-5">
+          <h3 className="text-light text-center mb-3">Artist</h3>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
             {artists.map((artist, index) => {
               return (
-                <div key={index} className="col-3 mx-3">
+                <div key={index} className="col">
                   <Artist_card_admin
                     image={artist.image_url}
                     name={artist.name}
@@ -103,7 +108,7 @@ export const AdminPanel = () => {
             })}
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

@@ -47,8 +47,8 @@ export const AdminNewsCreatePanel = () => {
 
   return (
     <div className="mx-5">
-      <Link to="/admin" style={{ textDecoration: "none" }}>
-        <h1 className="text-center text-dark">ADMIN PANEL</h1>
+      <Link to="/admin" className="second-title" style={{ textDecoration: "none" }}>
+        <h1>ADMIN PANEL</h1>
       </Link>
       <hr className="mx-4" />
       <form className="mx-4" onSubmit={(e) => handleSubmit(e)}>

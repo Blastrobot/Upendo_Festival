@@ -105,7 +105,7 @@ export const Navbar = () => {
 				)
 				:
 				(
-					<nav className="navbar navbar-light bg-dark navbar-expand-lg bg-body-tertiary">
+					<nav className="navbar navbar-light bg-dark bg-opacity-50 navbar-expand-lg bg-body-tertiary">
 						<div className="container">
 							<Link to="/" className="navbar-brand mb-0 h1">
 								<img src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png" alt="Upendo" width="180" height="100"></img>
