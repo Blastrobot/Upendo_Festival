@@ -59,8 +59,7 @@ export const NewsGrid = () => {
               </div>
             );
           })
-        )};
-          <LineUp text={"To news"} />
+        )}
     </div>
   );
 };

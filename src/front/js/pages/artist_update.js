@@ -32,7 +32,7 @@ export const AdminArtistsPanel = () => {
       <Link to="/admin" className="second-title" style={{ textDecoration: "none" }}>
         <h1>ADMIN PANEL</h1>
       </Link>
-      <hr className="mx-4" />
+      {/* <hr className="mx-4" /> */}
       <AdminArtistsForm
         name={artist.name}
         desc={artist.description}

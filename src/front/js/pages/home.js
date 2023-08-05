@@ -19,11 +19,11 @@ export const Home = () => {
         </h1>
       </Link>
       <Poster />
-      <hr/>
+      <hr className="mx-2"/>
       <Video />
-      <hr/>
+      <hr className="mx-2"/>
       <NewsGrid />
-      <hr/>
+      <hr className="mx-2 mb-1"/>
       <Container className="spotify container-fluid">
           <h1 className="spoty-title">Upendo Music Playlist</h1>
           <Spotify style={{width: "75%"}}link="https://open.spotify.com/playlist/4uNZ30aesoQ2CJJnIQdwWB"></Spotify>
