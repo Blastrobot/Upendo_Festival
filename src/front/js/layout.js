@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
+import { LandingPage } from "./pages/landing_page";
 import { Home } from "./pages/home";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
@@ -26,47 +27,54 @@ import { AdminNewsUpdatePanel } from "./pages/news_update";
 import { AdminNewsCreatePanel } from "./pages/news_create";
 import { AdminArtistsPanel } from "./pages/artist_update";
 
-//create your first component
+const MainLayout = ({ children }) => {
+  return (
+    // Here is rendering the routes inside route MainLayout, that way Nav and Footer is kept
+    // on the whole application, while LandingPage is excluded from that
+    <>
+    <Navbar/>
+      <Outlet></Outlet>
+    <Footer/>
+    </>
+  );
+};
+
 const Layout = () => {
-  //the basename is used when your project is published in a subdirectory and not in the root of the domain
-  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+
   const basename = process.env.BASENAME || "";
 
   return (
-    // <div className="">
       <CartProvider>
         <BrowserRouter basename={basename}>
           <ScrollToTop>
-            <Navbar />
             <Routes>
-              <Route element={<Home />} path="/" />
-              <Route element={<Signup />} path="/signup" />
-              <Route element={<Tickets />} path="/tickets" />
-              <Route element={<Artist_grid />} path="/artist" />
-              <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
-              <Route element={<AllNews />} path="/news" />
-
-              <Route element={<AdminPanel />} path="/admin" />
-              <Route
-                element={<AdminNewsUpdatePanel />}
-                path="/admin/news/update/:news_ID"
-              />
-              <Route
-                element={<AdminArtistsPanel />}
-                path="/admin/artist/:artist_ID"
-              />
-              <Route
-                element={<AdminNewsCreatePanel />}
-                path="/admin/news/create"
-              />
-
-              <Route element={<h1>Not found!</h1>} />
+              <Route element={<LandingPage />} path="/"/>
+              <Route element={<MainLayout />}>
+                <Route element={<Home />} path="/home" />
+                <Route element={<Signup />} path="/signup" />
+                <Route element={<Tickets />} path="/tickets" />
+                <Route element={<Artist_grid />} path="/artist" />
+                <Route element={<ArtistSingleView />} path="/artist/:artist_ID" />
+                <Route element={<AllNews />} path="/news" />
+                <Route element={<AdminPanel />} path="/admin" />
+                <Route
+                  element={<AdminNewsUpdatePanel />}
+                  path="/admin/news/update/:news_ID"
+                />
+                <Route
+                  element={<AdminArtistsPanel />}
+                  path="/admin/artist/:artist_ID"
+                />
+                <Route
+                  element={<AdminNewsCreatePanel />}
+                  path="/admin/news/create"
+                />
+                <Route element={<h1>Not found!</h1>} />
+              </Route>
             </Routes>
-            <Footer />
           </ScrollToTop>
         </BrowserRouter>
       </CartProvider>
-    // </div>
   );
 };
 

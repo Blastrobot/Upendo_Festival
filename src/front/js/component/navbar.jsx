@@ -40,7 +40,7 @@ export const Navbar = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		actions.login(email, password).then(navigate("/"));
+		actions.login(email, password).then(navigate("/home"));
 	};
 
 	const handleSignup = (e) => {
@@ -51,7 +51,7 @@ export const Navbar = () => {
 	const handleLogout = (evt) => {
 		evt.preventDefault();
 		actions.UserLogout();
-		navigate("/");
+		navigate("/home");
 	}
 
 	useEffect(() => {
@@ -63,9 +63,9 @@ export const Navbar = () => {
 		<div className="container-flex">
 			{!store.token ?
 				(
-					<nav className="navbar navbar-light bg-dark navbar-expand-lg bg-body-tertiary">
+					<nav className="navbar navbar-light bg-dark bg-opacity-50 navbar-expand-lg bg-body-tertiary">
 						<div className="container">
-							<Link to="/" className="navbar-brand mb-0 h1">
+							<Link to="/home" className="navbar-brand mb-0 h1">
 								<img src="https://res.cloudinary.com/dnqtyejtc/image/upload/v1676115484/logo_solo_mtudzh.png" alt="Upendo" width="180" height="100"></img>
 							</Link>
 							<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@ export const Navbar = () => {
 							</button>
 							<div className="collapse navbar-collapse" id="navbarNav">
 								<div className="navbar-nav">
-									<Link to="/" className="nav-link text-light" aria-current="page" href="#">Home</Link>
+									<Link to="/home" className="nav-link text-light" aria-current="page" href="#">Home</Link>
 									<Link to="/artist" className="nav-link text-light" href="#">Artists</Link>
 									<Link to="/news" className="nav-link text-light" href="#">News</Link>
 									<Link to="/tickets" className="nav-link text-light">Tickets</Link>

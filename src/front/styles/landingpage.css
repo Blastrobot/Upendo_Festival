@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.landing {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#intro-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 20px;
+  z-index: 2;
+}
+
+.btn-access {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  max-width: 100%;
+  min-width: 140px;
+  text-decoration: none;
+}
+
+.btn-access span {
+  background-color: transparent;
+  padding: 16px 32px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+  color: #fff;
+}
+
+.btn-access:hover span {
+  background: none;
+  background-image: linear-gradient(144deg, #d39393, #b393d3 50%, #af40ff);
+  /* box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px; */
+  box-shadow: 0 0 5px rgb(179, 147, 211),
+    /* 0 0 5px #03e9f4, */ 0 0 1px rgb(179, 147, 211),
+    0 0 50px rgb(179, 147, 211, 0.5);
+}
+
+.all-rights {
+    position: absolute;
+    color: white;
+    z-index: 0;
+    bottom: 1.5vh;
+    right: 1vw;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
