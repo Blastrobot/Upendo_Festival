@@ -31,7 +31,7 @@ jwt = JWTManager(app)
 app.url_map.strict_slashes = False
 
 # DOMAIN
-MY_DOMAIN = "https://3000-blastrobot-finalproject-3u9652mepy8.ws-eu89.gitpod.io/"
+MY_DOMAIN = "https://upendofestival.vercel.app"
 
 # Cloudinary configuration
 cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), 

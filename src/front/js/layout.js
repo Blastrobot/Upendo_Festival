@@ -70,6 +70,8 @@ const Layout = () => {
                   path="/admin/news/create"
                 />
                 <Route element={<h1>Not found!</h1>} />
+                <Route element={<Success />} path="?success=true"/>
+                <Route element={<Cancel />} path="?canceled=true"/>
               </Route>
             </Routes>
           </ScrollToTop>
