@@ -1,55 +1,43 @@
-# WebApp boilerplate with React JS and Flask API
+# Upendo Music Festival
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
+🥳 Welcome to Upendo Music Festival and enjoy the best and latest afro beats! 🎹 <br>
 
-> Documentation: https://start.4geeksacademy.com/
+https://upendofestival.vercel.app/
 
-<p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
-</p>
+## Features
 
-- React.js front end and python/flask backend for your web application.
-- Extensive documentation [here](https://start.4geeksacademy.com/).
-- Integrated with Pipenv for package managing.
-- Fast deloyment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+Website generated for Upendo Music Festival:
+- Landing video page
+- Home view with access to the line-up, festival intro video, news, Spotify official playlist and Tickets banner
+- Artist view, with detailed view for each artist, with info and song preview via Spotify
+- News view, where able to check for the latest updates around the festival or artists
+- Tickets view, to proceed to the tickets checkout. Need to first make an account or log in
+- **If** you get the **admin rights** on your account (for example, for an artist's manager), you would be able to access to an exclusive **admin** view, where you can edit (update) artists info or edit(update) or create new news
 
-### Styles
+## Demo
 
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
+![image](https://github.com/Blastrobot/Upendo_Festival/assets/114672545/3af5d3e7-c81d-43db-a683-71d9357fe96f)
+![image](https://github.com/Blastrobot/Upendo_Festival/assets/114672545/1a8dddcf-28c4-4387-811d-d911cabf5193)
+![image](https://github.com/Blastrobot/Upendo_Festival/assets/114672545/ba273327-38f4-4b74-a6f0-b71dbf003cc8)
 
-### Components
+## Stack
 
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
+- React
+- JavaScript
+- Flask
+- Python
+- Stripe
+- Cloudinary
+- Postgres
+- Vercel
 
-💡Note: There is an example using the Context API inside `views/demo.js`;
+## Getting started
 
-### Views (Components)
+### Clone the repository:
 
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
+`git clone https://github.com/Blastrobot/Upendo_Festival`
 
-### Context
-
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
-
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
-
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-    //here you use useContext to get store and actions
-    const { store, actions } = useContext(Context);
-    return <div>{/* you can use your actions or store inside the html */}</div>;
-};
-```
-
-### Back-End Manual Installation:
-
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+### Backend installation:
 
 1. Install the python packages: `$ pipenv install`
 2. Create a .env file based on the .env.example: `$ cp .env.example .env`
@@ -61,43 +49,24 @@ It is recomended to install the backend first, make sure you have Python 3.8, Pi
 | MySQL     | mysql://username:password@localhost:port/example    |
 | Postgress | postgres://username:password@localhost:5432/example |
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
+4. Migrate the migrations: `$ pipenv run migrate`
 5. Run the migrations: `$ pipenv run upgrade`
 6. Run the application: `$ pipenv run start`
 
-### Backend Populate Table Users
+### Frontend installation:
 
-To insert test users in the database execute the following command:
+1. Install dependencies: `$ npm install`
+2. Run the app: `$ npm run start`
 
-```sh
-$ flask insert-test-users 5
-```
+### Open the app in your browser
 
-And you will see the following message:
+Visit [http://localhost:3000](http://localhost:3000) in your browser
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+## Contributing
+### Contributors 
 
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
-
-## Demo
-
-https://im5.ezgif.com/tmp/ezgif-5-16a9a6e2cb.gif
+<a href="https://github.com/blastrobot/upendo_festival/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=blastrobot/upendo_festival" />
+    <img src="https://github.com/tuniet.png" width="60px;"/>
+    <img src="https://github.com/santiagoss01.png" width="60px;"/>
+</a>
