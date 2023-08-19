@@ -16,10 +16,10 @@ Website generated for Upendo Music Festival:
 
 ## Demo
 
+https://github.com/Blastrobot/Upendo_Festival/assets/114672545/af65b459-62fe-4b80-b547-479db87ee0af
+
 ![image](https://github.com/Blastrobot/Upendo_Festival/assets/114672545/3af5d3e7-c81d-43db-a683-71d9357fe96f)
 ![image](https://github.com/Blastrobot/Upendo_Festival/assets/114672545/1a8dddcf-28c4-4387-811d-d911cabf5193)
-
-https://github.com/Blastrobot/Upendo_Festival/assets/114672545/af65b459-62fe-4b80-b547-479db87ee0af
 
 ## Stack
 
