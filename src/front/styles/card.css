@@ -1,0 +1,59 @@
+.cards {
+  width: 390px;
+  height: 390px;
+  /* margin: auto;
+  object-fit: cover; */
+}
+.container {
+  object-fit: fill;
+}
+.artist-image {
+  width: 390px;
+  height: 390px;
+  object-fit: cover;
+}
+.hidden-menú {
+  position: absolute;
+  /* margin-top: 250px;
+  margin-bottom: 250px; */
+  width: 390px;
+  height: 100px;
+  /* background-size: fill; */
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+}
+/* .hidden-menú:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+} */
+/* .btn {
+  opacity: 0;
+} */
+.direct-to {
+  width: 390px;
+}
+.direct-to:hover { /* I can use here .btn:hover if I want the hover to work on all the buttons in my app */
+  /* opacity: 1; */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* color: #fff; */
+  border-style: none;
+  font-size: 25px;
+}
+.card-grid {
+  /* width: 1400px;
+  height: 2000;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  padding-right: 100px; */
+  gap: 4px 4px;
+  flex-wrap: wrap;
+}
+/* .top-container {
+  padding-left: 50px;
+  margin-bottom: 100px;
+} */
+.direct-to {
+  text-transform: uppercase;
+  
+}

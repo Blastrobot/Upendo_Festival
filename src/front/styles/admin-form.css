@@ -1,0 +1,26 @@
+.admin-form {
+  /* background: rgb(156,115,209); */
+  /* background: linear-gradient(90deg, #d39393 0%, #b393d3 100%);        */
+  box-shadow: 0px 0px 5px #9c73d1, 0px 0px 1px #458cf9;
+  opacity: 0.7;
+  color: white;
+}
+.form-btn {
+  box-shadow: 0px 0px 5px #d39393, 0px 0px 1px #b393d3;
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.news-card-admin {
+  overflow: hidden;
+}
+.card-img {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
