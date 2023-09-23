@@ -70,6 +70,4 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser
 
 <a href="https://github.com/blastrobot/upendo_festival/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=blastrobot/upendo_festival" />
-    <img src="https://github.com/tuniet.png" width="60px;"/>
-    <img src="https://github.com/santiagoss01.png" width="60px;"/>
 </a>
